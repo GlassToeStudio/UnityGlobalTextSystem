@@ -34,6 +34,8 @@ Alternately you can Clone the repo using:
 
 Open source repo!. Feel free to create a fork and make contributions!
 
+Contributing guidelines can be found [here](CONTRIBUTING.md)
+
 ## Authors
 
 * **GlassToeStudio** [Glass Toe Studio](http://www.glasstoestudio.weebly.com)
