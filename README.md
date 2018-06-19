@@ -22,23 +22,21 @@ Must have [Unity](https://unity3d.com/) installed.
 
 If contributing, be sure to have `git` installed.
 
-
 ### Installing
 
-To use the projet, all you need is to [Download the latest release](https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font/releases) and import the package into your Unity project.
+To use the project, all you need is to [Download the latest release](https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font/releases) and import the package into your Unity project.
 
-Alternatly you can Clone the repo using:
+Alternately you can Clone the repo using:
 
     git clone https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font.git
 
 ## Contributing
 
-Open source repo!. Fell free to create a fork and make contributions!
+Open source repo!. Feel free to create a fork and make contributions!
 
 ## Authors
 
 * **GlassToeStudio** [Glass Toe Studio](http://www.glasstoestudio.weebly.com)
-
 
 ## License
 
@@ -47,4 +45,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 * Inspiration by Discord user @Dibbie#0408
-
