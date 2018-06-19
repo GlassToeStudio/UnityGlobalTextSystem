@@ -37,7 +37,7 @@ Open source repo!. Fell free to create a fork and make contributions!
 
 ## Authors
 
-* **GlasToeStudio** [Glass Toe Studio](http://www.glasstoestudio.weebly.com)
+* **GlassToeStudio** [Glass Toe Studio](http://www.glasstoestudio.weebly.com)
 
 
 ## License
