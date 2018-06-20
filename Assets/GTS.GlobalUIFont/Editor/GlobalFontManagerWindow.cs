@@ -159,8 +159,6 @@ namespace GTS.GlobalUIFont
                 SetGlobalFontData(selctedFont);
 
                 fontDisplayName = selctedFont.name;
-
-                SceneView.RepaintAll();
             }
         }
 
@@ -174,6 +172,8 @@ namespace GTS.GlobalUIFont
             if(GUILayout.Button("Change All Fonts In Scene"))
             {
                 GlobalFontManager.ChangeAllFonts();
+                SceneView.lastActiveSceneView.Repaint();
+                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
             }
         }
 
