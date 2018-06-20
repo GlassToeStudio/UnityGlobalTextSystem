@@ -1,7 +1,7 @@
 # Unity-Set-Global-UI-Text-Font
 
 <p align="center">
-  <b><br>
+  <br>
   <img src="https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font/blob/master/Images/Promo.PNG">
 </p>
 
@@ -17,7 +17,8 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
      **Additional Options**
    * Button to *Reset* global font to default (Arial)
    * Button to Change the font of all UI Text in the scene at once
-           *Useful if you already have a bunch of Text in a scene, and decide to use a new font*
+
+    *Useful if you already have a bunch of Text in a scene, and decide to use a new font*
         
 
 
@@ -42,7 +43,8 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
 Must have [Unity](https://unity3d.com/) installed. 
 
  *Tested with the June 15th release of `Unity 2018.1.5f1`*
- *Tested with the 5.6*
+ 
+ *Tested with Unity 5.6 as well*
 
 If contributing, be sure to have `git` installed.
 
