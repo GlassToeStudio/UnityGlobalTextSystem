@@ -32,6 +32,8 @@ namespace GTS.GlobalUIFont
         /// </summary>
         private static string fontDisplayName = GlobalFontUtils.ARIAL;
 
+        Color fontColor;
+
         #endregion
 
         #region init
@@ -43,8 +45,9 @@ namespace GTS.GlobalUIFont
         private static void ShowWindow()
         {
             GlobalFontManagerWindow w = GetWindow<GlobalFontManagerWindow>(false, "Global UI Font", true);
-            w.minSize = new Vector2(200, 110);
-            w.maxSize = new Vector2(200, 110);
+            w.minSize = new Vector2(200, 400);
+            w.maxSize = new Vector2(200, 400);
+            w.autoRepaintOnSceneChange = true;
 
             // Display current Font name.
             if(GlobalFontManager.GlobalFontData != null)
@@ -74,7 +77,13 @@ namespace GTS.GlobalUIFont
 
             ChangeAllFontsButton();
 
-            OnSelectorClosed();
+            OnFontSelectorClosed();
+
+            ChangeAllFontsColorButton();
+
+            ChangeAllFontSizeButton();
+
+            CloseWindowButton();
 
             //TODO: Debug Only
             DeletePrefsButton();
@@ -88,7 +97,7 @@ namespace GTS.GlobalUIFont
         /// Listens for ObjectSelectorClosedEvent.
         /// Will Get/Set the global font.
         /// </summary>
-        private void OnSelectorClosed()
+        private void OnFontSelectorClosed()
         {
             if(Event.current.commandName == "ObjectSelectorClosed")
             {
@@ -100,6 +109,8 @@ namespace GTS.GlobalUIFont
 
                     fontDisplayName = selectedFont.name;
                 }
+
+                this.Repaint();
             }
         }
 
@@ -143,6 +154,7 @@ namespace GTS.GlobalUIFont
             {
                 EditorGUIUtility.ShowObjectPicker<Font>(null, true, "", GUIUtility.GetControlID(FocusType.Passive) + 100);
             }
+            EditorGUILayout.ObjectField(GlobalFontManager.GlobalFontData.font, typeof(Font), true);
         }
 
         /// <summary>
@@ -159,6 +171,7 @@ namespace GTS.GlobalUIFont
                 SetGlobalFontData(selctedFont);
 
                 fontDisplayName = selctedFont.name;
+                this.Repaint();
             }
         }
 
@@ -172,27 +185,82 @@ namespace GTS.GlobalUIFont
             if(GUILayout.Button("Change All Fonts In Scene"))
             {
                 GlobalFontManager.ChangeAllFonts();
-                SceneView.lastActiveSceneView.Repaint();
-                UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+                RepaintAll();
             }
         }
 
-            #region debug
-            /// <summary>
-            /// Debug Only: Delete EditorPrefs.
-            /// </summary>
-            private void DeletePrefsButton()
-            {
-                EditorGUILayout.Space();
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ChangeAllFontsColorButton()
+        {
+            EditorGUILayout.Space();
 
-                //if(GUILayout.Button("Delete Editor Prefs"))
-                //{
-                //    Debug.Log("Before: " + EditorPrefs.GetString(GlobalFontUtils.GLOBAL_FONT_KEY, GlobalFontUtils.ARIAL));
-                //    EditorPrefs.DeleteAll();
-                //    Debug.Log("After: " + EditorPrefs.GetString(GlobalFontUtils.GLOBAL_FONT_KEY, GlobalFontUtils.ARIAL));
-                //}
+            if(GUILayout.Button("Change All Fonts Color In Scene"))
+            {
+                GlobalFontManager.ChangeAllFontsColor();
+                RepaintAll();
             }
-            #endregion
+            GlobalFontManager.GlobalFontData.color = EditorGUILayout.ColorField(GlobalFontManager.GlobalFontData.color);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ChangeAllFontSizeButton()
+        {
+            EditorGUILayout.Space();
+
+            if(GUILayout.Button("Change All Fonts Size In Scene"))
+            {
+                GlobalFontManager.ChangeAllFontsSize();
+                RepaintAll();
+            }
+            GlobalFontManager.GlobalFontData.fontSize = EditorGUILayout.IntField(GlobalFontManager.GlobalFontData.fontSize);
+        }
+
+        /// <summary>
+        /// FClose this window
+        /// </summary>
+        private void CloseWindowButton()
+        {
+            EditorGUILayout.Space();
+
+            if(GUILayout.Button("Close"))
+            {
+                this.Close();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void RepaintAll()
+        {
+            SceneView.lastActiveSceneView.Repaint();
+            SceneView.RepaintAll();
+            UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
+            this.Repaint();
+        }
+
+        #endregion
+
+        #region debug
+
+        /// <summary>
+        /// Debug Only: Delete EditorPrefs.
+        /// </summary>
+        private void DeletePrefsButton()
+        {
+            EditorGUILayout.Space();
+
+            if(GUILayout.Button("Delete Editor Prefs"))
+            {
+                Debug.Log("Before: " + EditorPrefs.GetString(GlobalFontUtils.GLOBAL_FONT_KEY, GlobalFontUtils.ARIAL));
+                EditorPrefs.DeleteAll();
+                Debug.Log("After: " + EditorPrefs.GetString(GlobalFontUtils.GLOBAL_FONT_KEY, GlobalFontUtils.ARIAL));
+            }
+        }
 
         #endregion
     }

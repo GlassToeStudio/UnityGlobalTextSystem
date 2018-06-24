@@ -23,27 +23,29 @@ namespace GTS.GlobalUIFont
     /// </summary>
     public class FontData : ScriptableObject
     {
-        //[TextArea]
-        //public string text;
+        [TextArea]
+        public string text;
 
         /// <summary>
         /// The font to be used as the Global UI text font. 
         /// </summary>
         [Header("Character")]
         public Font font;
-        //public FontStyle fontStyle;
-        //public int fontSize;
-        //public float lineSpacing;
-        //public bool richText;
+        public FontStyle fontStyle;
+        public int fontSize;
+        public float lineSpacing;
+        public bool supportRichText;
 
-        //[Header("Paragraph")]
-        //public TextAnchor alignment;
-        //public bool alignByGeometry;
-        //public HorizontalWrapMode horizontalOverflow;
-        //public VerticalWrapMode verticalOverflow;
-        //public bool  bestFit;
+        [Header("Paragraph")]
+        public TextAnchor alignment;
+        public bool alignByGeometry;
+        public HorizontalWrapMode horizontalOverflow;
+        public VerticalWrapMode verticalOverflow;
+        public bool resizeTextForBestFit;
+
+        [Space]
         public Color color;
-        //public Material material;
-        //public bool RayCastTarget;
+        public Material material;
+        public bool raycastTarget;
     }
 }

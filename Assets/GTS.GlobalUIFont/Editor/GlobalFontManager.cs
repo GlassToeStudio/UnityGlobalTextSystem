@@ -25,13 +25,14 @@ namespace GTS.GlobalUIFont
     /// to see if it is the GlobalFontData.
     /// </summary>
     [InitializeOnLoad]
-    class GlobalFontManager :Editor
+    class GlobalFontManager : Editor
     {
         #region properties
+
         /// <summary>
         /// Get or Set the Global Font to be used for Every Text Object.
         /// </summary>
-        public static FontData GlobalFontData { get; set; }
+        [SerializeField]public static FontData GlobalFontData { get; set; }
 
         /// <summary>
         /// Only returns true of GlobalFontData is found and legit.
@@ -97,7 +98,7 @@ namespace GTS.GlobalUIFont
         #region Event
 
         /// <summary>
-        /// Get all Text assets in scene and get/set their font.
+        /// Get newly created Text asset and get/set its font.
         /// </summary>
         private static void OnHierarchyChanged()
         {
@@ -109,7 +110,7 @@ namespace GTS.GlobalUIFont
                     return;
                 }
 
-                Selection.activeGameObject.GetComponentInChildren<Text>(true).font = GlobalFontData.font;
+                Selection.activeGameObject.GetComponentInChildren<Text>(true).SetFont(GlobalFontData.font);
             }
         }
 
@@ -138,7 +139,7 @@ namespace GTS.GlobalUIFont
                     {
                         fontChangedCount++;
 
-                        t.font = GlobalFontData.font;
+                        t.SetFont(GlobalFontData.font);
                     }
                 }
 
@@ -151,9 +152,96 @@ namespace GTS.GlobalUIFont
             }
         }
 
+        public static void ChangeAllFontsColor()
+        {
+            if(IsGlobalFontCriteriaMet())
+            {
+                var textCount = 0;
+                var fontChangedCount = 0;
+
+                // All text objects in scene.
+                var allTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+
+                foreach(Text t in allTextObjects)
+                {
+                    textCount++;
+
+                    if(t.color != GlobalFontData.color)
+                    {
+                        fontChangedCount++;
+
+                        t.SetFontColor(GlobalFontData.color);
+                    }
+                }
+
+                Debug.Log(
+                    string.Format(
+                        "{0} Total Text objects found. {1} Total fonts color changed!",
+                        textCount,
+                        fontChangedCount
+                        ));
+            }
+        }
+
+        public static void ChangeAllFontsSize()
+        {
+            if(IsGlobalFontCriteriaMet())
+            {
+                var textCount = 0;
+                var fontChangedCount = 0;
+
+                var allTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+
+                foreach(Text t in allTextObjects)
+                {
+                    textCount++;
+
+                    if(!t.MatchFontSize(GlobalFontData))
+                    {
+                        fontChangedCount++;
+
+                        t.SetFontSize(GlobalFontData);
+                    }
+                }
+
+                Debug.Log(
+                    string.Format(
+                        "{0} Total Text objects found. {1} Total fonts size changed!",
+                        textCount,
+                        fontChangedCount
+                        ));
+            }
+        }
+
         #endregion
 
         #region private methods
+
+        /// <summary>
+        /// Change Every propery of the Text to the saved FontData.
+        /// </summary>
+        public static void InitializeNewTextObject(Text textObject)
+        {
+            //textObject.text = GlobalFontData.text;
+
+            textObject.SetFont(GlobalFontData);
+            textObject.SetFontSize(GlobalFontData);
+            textObject.SetFontSize(GlobalFontData);
+
+            textObject.lineSpacing = GlobalFontData.lineSpacing;
+            textObject.supportRichText = GlobalFontData.supportRichText;
+
+            textObject.alignment = GlobalFontData.alignment;
+            textObject.alignByGeometry = GlobalFontData.alignByGeometry;
+            textObject.horizontalOverflow = GlobalFontData.horizontalOverflow;
+            textObject.verticalOverflow = GlobalFontData.verticalOverflow;
+            textObject.resizeTextForBestFit = GlobalFontData.resizeTextForBestFit;
+
+            textObject.SetFontColor(GlobalFontData);
+
+            textObject.material = GlobalFontData.material;
+            textObject.raycastTarget = GlobalFontData.raycastTarget;
+        }
 
         /// <summary>
         /// Subscribe to the hierarchyChanged Event. IsInit = true;
@@ -162,15 +250,15 @@ namespace GTS.GlobalUIFont
         {
             if(!IsInit)
             {
-                #if UNITY_2018_1_OR_NEWER
+#if UNITY_2018_1_OR_NEWER
 
                 EditorApplication.hierarchyChanged += OnHierarchyChanged;
 
-                #else
+#else
 
                 EditorApplication.hierarchyWindowChanged += OnHierarchyChanged;
 
-                #endif
+#endif
 
                 IsInit = true;
             }
@@ -183,15 +271,15 @@ namespace GTS.GlobalUIFont
         {
             if(IsInit)
             {
-                #if UNITY_2018_1_OR_NEWER
+#if UNITY_2018_1_OR_NEWER
 
                 EditorApplication.hierarchyChanged -= OnHierarchyChanged;
 
-                #else
+#else
 
                 EditorApplication.hierarchyWindowChanged -= OnHierarchyChanged;
 
-                #endif
+#endif
                 IsInit = false;
             }
         }

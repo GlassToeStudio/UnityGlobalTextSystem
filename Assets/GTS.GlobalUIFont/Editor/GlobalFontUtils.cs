@@ -97,9 +97,10 @@ namespace GTS.GlobalUIFont
             
             AssetDatabase.Refresh();
 
-            Resources.UnloadUnusedAssets();
+            //Resources.UnloadUnusedAssets();
         }
 
         #endregion
     }
+
 }
