@@ -48,4 +48,21 @@ namespace GTS.GlobalUIFont
         public Material material;
         public bool raycastTarget;
     }
+
+    public enum TextProperty
+    {
+        FONT,
+        FONT_STYLE,
+        FONT_SIZE,
+        LINE_SPACING,
+        RICH_TEXT,
+        ALIGNMENT,
+        ALIGN_BY_GEOMETRY,
+        HORIZONTAL_OVERFLOW,
+        VERTICAL_OVERFLOW,
+        BEST_FIT,
+        COLOR,
+        MATERIAL,
+        RAYCAST
+    }
 }

@@ -11,6 +11,7 @@
 ================================================================================
 */
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,37 +25,6 @@ namespace GTS.GlobalUIFont
     /// </summary>
     public static class GlobalFontExtensions
     {
-        /// <summary>
-        /// Compares this font size with the passed in value.
-        /// </summary>
-        /// <param name="t"> this Text object</param>
-        /// <param name="fontSize">The font size to that is being compared.</param>
-        /// <returns>true if font sizes are equal.</returns>
-        public static bool MatchFontSize(this Text t, int fontSize)
-        {
-            return t.fontSize == fontSize;
-        }
-        /// <summary>
-        /// Compares this font size with the passed in value.
-        /// </summary>
-        /// <param name="t"> this Text object</param>
-        /// <param name="text">The Text object font size to that is being compared.</param>
-        /// <returns>true if font sizes are equal.</returns>
-        public static bool MatchFontSize(this Text t, Text text)
-        {
-            return t.MatchFontSize(text.fontSize);
-        }
-        /// <summary>
-        /// Compares this font size with the passed in value.
-        /// </summary>
-        /// <param name="t"> this Text object</param>
-        /// <param name="fontData">The FontData font size to that is being compared.</param>
-        /// <returns>true if font sizes are equal.</returns>
-        public static bool MatchFontSize(this Text t, FontData fontData)
-        {
-            return t.MatchFontSize(fontData.fontSize);
-        }
-
         /// <summary>
         /// Set the Font of this Text object with the passed in value.
         /// </summary>
@@ -81,6 +51,15 @@ namespace GTS.GlobalUIFont
         public static void SetFont(this Text t, FontData fontData)
         {
             t.SetFont(fontData.font);
+        }
+        /// <summary>
+        /// Set the Font of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"> this Text object</param>
+        /// <param name="toValue">The generic T with the font that this Text object will be set.</param>
+        public static void SetFont<T>(this Text t, T toValue)
+        {
+            t.SetFont(toValue as Font);
         }
 
         /// <summary>
@@ -110,6 +89,16 @@ namespace GTS.GlobalUIFont
         {
             t.SetFontStyle(fontData.fontStyle);
         }
+        /// <summary>
+        /// Set the FontStyle of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t">this Text object</param>
+        /// <param name="fontData">The FontData with FontStyle that this Text object will be set.</param>
+        public static void SetFontStyle<T>(this Text t, T toValue)
+        {
+            t.SetFontStyle((FontStyle)Enum.Parse(typeof(T), toValue.ToString()));
+        }
+        
 
         /// <summary>
         /// Set the FontSize of this Text object with the passed in value.
@@ -138,6 +127,16 @@ namespace GTS.GlobalUIFont
         {
             t.SetFontSize(fontData.fontSize);
         }
+        /// <summary>
+        /// Set the FontSize of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t">this Text object</param>
+        /// <param name="fontData">The FontData with the T that this Text object will be set.</param>
+        public static void SetFontSize<T>(this Text t, T toValue)
+        {
+            t.SetFontSize(Convert.ToInt32(toValue));
+        }
+
 
         /// <summary>
         /// Set the Line Spacing of this Text object with the passed in value.
@@ -221,6 +220,49 @@ namespace GTS.GlobalUIFont
         public static void SetFontColor(this Text t, FontData fontData)
         {
             t.SetFontColor(fontData.color);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetFontColor<T>(this Text t, T toValue)
+        {
+            t.SetFontColor((Color)Convert.ChangeType(toValue, typeof(Color)));
+        }
+
+        // Need the rest of the extensions.
+
+
+        /// <summary>
+        /// Compares this font size with the passed in value.
+        /// </summary>
+        /// <param name="t"> this Text object</param>
+        /// <param name="fontSize">The font size to that is being compared.</param>
+        /// <returns>true if font sizes are equal.</returns>
+        public static bool MatchFontSize(this Text t, int fontSize)
+        {
+            return t.fontSize == fontSize;
+        }
+        /// <summary>
+        /// Compares this font size with the passed in value.
+        /// </summary>
+        /// <param name="t"> this Text object</param>
+        /// <param name="text">The Text object font size to that is being compared.</param>
+        /// <returns>true if font sizes are equal.</returns>
+        public static bool MatchFontSize(this Text t, Text text)
+        {
+            return t.MatchFontSize(text.fontSize);
+        }
+        /// <summary>
+        /// Compares this font size with the passed in value.
+        /// </summary>
+        /// <param name="t"> this Text object</param>
+        /// <param name="fontData">The FontData font size to that is being compared.</param>
+        /// <returns>true if font sizes are equal.</returns>
+        public static bool MatchFontSize(this Text t, FontData fontData)
+        {
+            return t.MatchFontSize(fontData.fontSize);
         }
     }
 }

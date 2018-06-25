@@ -187,7 +187,7 @@ namespace GTS.GlobalUIFont
 
             if(GUILayout.Button("Change All Fonts Color In Scene"))
             {
-                GlobalFontSystem.ChangeAllFontsColor();
+                GlobalFontSystem.ChangeAllColor();
                 RepaintAll();
             }
             GlobalFontManager.GlobalFontData.color = EditorGUILayout.ColorField(GlobalFontManager.GlobalFontData.color);
@@ -202,7 +202,7 @@ namespace GTS.GlobalUIFont
 
             if(GUILayout.Button("Change All Fonts Size In Scene"))
             {
-                GlobalFontSystem.ChangeAllFontsSize();
+                GlobalFontSystem.ChangeAllFontSize();
                 RepaintAll();
             }
             GlobalFontManager.GlobalFontData.fontSize = EditorGUILayout.IntField(GlobalFontManager.GlobalFontData.fontSize);
