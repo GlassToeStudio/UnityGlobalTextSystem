@@ -19,12 +19,12 @@ using UnityEngine.UI;
 /// </summary>
 namespace GTS.GlobalUIFont
 { 
-    public static class MenuItems
+    public static class GlobalFontMenuItems
     {
         [MenuItem("CONTEXT/Text/Set to Custom")]
         private static void SetTextToCustom(MenuCommand menuCommand)
         {
-            GlobalFontManager.InitializeNewTextObject(menuCommand.context as Text);
+            GlobalFontSystem.InitializeNewTextObject(menuCommand.context as Text);
         }
 
         [MenuItem("CONTEXT/Text/Set to Global Color")]
@@ -38,7 +38,7 @@ namespace GTS.GlobalUIFont
         [MenuItem("GameObject/Global Font/Set to Custom", priority = 38, validate = false)]
         private static void NewMenuOption()
         {
-            GlobalFontManager.InitializeNewTextObject(Selection.activeGameObject.GetComponent<Text>());
+            GlobalFontSystem.InitializeNewTextObject(Selection.activeGameObject.GetComponent<Text>());
         }
 
         [MenuItem("GameObject/Global Font/Set to Custom", priority = 38, validate = true)]

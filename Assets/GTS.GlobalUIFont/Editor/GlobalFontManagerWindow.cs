@@ -11,7 +11,6 @@
 ================================================================================
 */
 
-using System.IO;
 using UnityEngine;
 using UnityEditor;
 
@@ -30,7 +29,7 @@ namespace GTS.GlobalUIFont
         /// <summary>
         /// Name of the Global Font, to be displayed in the Window.
         /// </summary>
-        private static string fontDisplayName = GlobalFontUtils.ARIAL;
+        private static string fontDisplayName = GlobalFontConstants.ARIAL;
 
         Color fontColor;
 
@@ -59,10 +58,11 @@ namespace GTS.GlobalUIFont
             }
             else
             {
-                fontDisplayName = GlobalFontUtils.ARIAL;
+                fontDisplayName = GlobalFontConstants.ARIAL;
             }
         }
 
+        
         /// <summary>
         /// Draw the window and its components. Listen for Button CLicks.
         /// </summary>
@@ -111,6 +111,8 @@ namespace GTS.GlobalUIFont
                 }
 
                 this.Repaint();
+
+                GlobalFontListener.Listen();
             }
         }
 
@@ -120,23 +122,7 @@ namespace GTS.GlobalUIFont
         /// <param name="selectedFont"></param>
         private void SetGlobalFontData(Font selectedFont)
         {
-            if(!File.Exists(string.Format("{0}{1}{2}.asset", Application.dataPath, GlobalFontUtils.SAVE_PATH, selectedFont.name)))
-            {
-                GlobalFontUtils.SaveGlobalFont(selectedFont);
-                GlobalFontManager.Init();
-            }
-            else
-            {
-                if(!GlobalFontManager.IsInit)
-                {
-                    EditorPrefs.SetString(GlobalFontUtils.GLOBAL_FONT_KEY, selectedFont.name);
-                    GlobalFontManager.Init();
-                }
-                else
-                {
-                    GlobalFontManager.GlobalFontData = GlobalFontUtils.LoadGlobalFont(selectedFont.name);
-                }
-            }
+            GlobalFontAssetManager.SetGlobalFont(selectedFont);
         }
 
         #endregion
@@ -166,11 +152,14 @@ namespace GTS.GlobalUIFont
 
             if(GUILayout.Button("Reset Font"))
             {
-                var selctedFont = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+                var selctedFont = GlobalFontConstants.ARIAL;
 
-                SetGlobalFontData(selctedFont);
+                GlobalFontManager.GlobalFontData = GlobalFontAssetManager.LoadFontAsset(selctedFont);
 
-                fontDisplayName = selctedFont.name;
+                GlobalFontListener.Listen();
+
+                fontDisplayName = selctedFont;
+
                 this.Repaint();
             }
         }
@@ -184,7 +173,7 @@ namespace GTS.GlobalUIFont
 
             if(GUILayout.Button("Change All Fonts In Scene"))
             {
-                GlobalFontManager.ChangeAllFonts();
+                GlobalFontSystem.ChangeAllFonts();
                 RepaintAll();
             }
         }
@@ -198,7 +187,7 @@ namespace GTS.GlobalUIFont
 
             if(GUILayout.Button("Change All Fonts Color In Scene"))
             {
-                GlobalFontManager.ChangeAllFontsColor();
+                GlobalFontSystem.ChangeAllFontsColor();
                 RepaintAll();
             }
             GlobalFontManager.GlobalFontData.color = EditorGUILayout.ColorField(GlobalFontManager.GlobalFontData.color);
@@ -213,7 +202,7 @@ namespace GTS.GlobalUIFont
 
             if(GUILayout.Button("Change All Fonts Size In Scene"))
             {
-                GlobalFontManager.ChangeAllFontsSize();
+                GlobalFontSystem.ChangeAllFontsSize();
                 RepaintAll();
             }
             GlobalFontManager.GlobalFontData.fontSize = EditorGUILayout.IntField(GlobalFontManager.GlobalFontData.fontSize);
@@ -256,9 +245,9 @@ namespace GTS.GlobalUIFont
 
             if(GUILayout.Button("Delete Editor Prefs"))
             {
-                Debug.Log("Before: " + EditorPrefs.GetString(GlobalFontUtils.GLOBAL_FONT_KEY, GlobalFontUtils.ARIAL));
+                Debug.Log("Before: " + EditorPrefs.GetString(GlobalFontConstants.GLOBAL_FONT_KEY, GlobalFontConstants.ARIAL));
                 EditorPrefs.DeleteAll();
-                Debug.Log("After: " + EditorPrefs.GetString(GlobalFontUtils.GLOBAL_FONT_KEY, GlobalFontUtils.ARIAL));
+                Debug.Log("After: " + EditorPrefs.GetString(GlobalFontConstants.GLOBAL_FONT_KEY, GlobalFontConstants.ARIAL));
             }
         }
 
