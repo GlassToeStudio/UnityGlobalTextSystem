@@ -14,6 +14,7 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using GTS.GlobalUIFont.Tools;
 
 /// <summary>
 /// Small System to change the global font from "Arial" to another font of your choosing.

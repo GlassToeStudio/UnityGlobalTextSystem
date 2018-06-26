@@ -31,38 +31,23 @@ namespace GTS.GlobalUIFont
         /// </summary>
         [Header("Character")]
         public Font font;
-        public FontStyle fontStyle;
-        public int fontSize;
-        public float lineSpacing;
-        public bool supportRichText;
+        public FontStyle fontStyle = FontStyle.Normal;
+        public int fontSize = 14;
+        public float lineSpacing = 1.0f;
+        public bool supportRichText = false;
 
         [Header("Paragraph")]
-        public TextAnchor alignment;
-        public bool alignByGeometry;
-        public HorizontalWrapMode horizontalOverflow;
-        public VerticalWrapMode verticalOverflow;
-        public bool resizeTextForBestFit;
+        public TextAnchor alignment = TextAnchor.MiddleCenter;
+        public bool alignByGeometry = false;
+        public HorizontalWrapMode horizontalOverflow = HorizontalWrapMode.Overflow;
+        public VerticalWrapMode verticalOverflow = VerticalWrapMode.Truncate;
+        public bool resizeTextForBestFit = false;
+        public int resizeTextMinSize = 0;
+        public int resizeTextMaxSize = 60;
 
         [Space]
-        public Color color;
+        public Color color = Color.black;
         public Material material;
-        public bool raycastTarget;
-    }
-
-    public enum TextProperty
-    {
-        FONT,
-        FONT_STYLE,
-        FONT_SIZE,
-        LINE_SPACING,
-        RICH_TEXT,
-        ALIGNMENT,
-        ALIGN_BY_GEOMETRY,
-        HORIZONTAL_OVERFLOW,
-        VERTICAL_OVERFLOW,
-        BEST_FIT,
-        COLOR,
-        MATERIAL,
-        RAYCAST
+        public bool raycastTarget = false;
     }
 }

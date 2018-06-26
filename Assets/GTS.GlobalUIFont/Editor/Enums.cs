@@ -16,21 +16,20 @@
 /// </summary>
 namespace GTS.GlobalUIFont.Tools
 {
-    public class GlobalFontConstants
+    public enum TextProperty
     {
-        /// <summary>
-        /// The string KEY by which the EditorPrefs saves/loads GlobalFontData name.
-        /// </summary>
-        public const string GLOBAL_FONT_KEY = "GlobalFontData";
-
-        /// <summary>
-        /// The string which holds the save path for each GlobalFontData asset.
-        /// </summary>
-        public const string SAVE_PATH = "/Editor Default Resources/GTS.GlobalUIFontSettings/";
-
-        /// <summary>
-        /// Default Font, when not Font has been chosen, or could be loaded.
-        /// </summary>
-        public const string ARIAL = "Arial";
+        FONT,
+        FONT_STYLE,
+        FONT_SIZE,
+        LINE_SPACING,
+        RICH_TEXT,
+        ALIGNMENT,
+        ALIGN_BY_GEOMETRY,
+        HORIZONTAL_OVERFLOW,
+        VERTICAL_OVERFLOW,
+        BEST_FIT,
+        COLOR,
+        MATERIAL,
+        RAYCAST
     }
 }

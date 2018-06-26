@@ -11,14 +11,14 @@
 ================================================================================
 */
 
+using System.IO;
 using UnityEngine;
 using UnityEditor;
-using System.IO;
 
 /// <summary>
 /// Small System to change the global font from "Arial" to another font of your choosing.
 /// </summary>
-namespace GTS.GlobalUIFont
+namespace GTS.GlobalUIFont.Tools
 {
     /// <summary>
     /// Some utility functions to load and save FontData assets.
@@ -28,20 +28,25 @@ namespace GTS.GlobalUIFont
 
         #region public methods
 
+        /// <summary>
+        /// Set the passed in Font as the Global Font to be used for any new text object.
+        /// </summary>
+        /// <param name="selectedFont">Font to be set as global.</param>
         public static void SetGlobalFont(Font selectedFont)
         {
             if(!IfFileExists(selectedFont.name))
             {
                 SaveFontAsset(selectedFont);
             }
-
+            EditorPrefs.SetString(GlobalFontConstants.GLOBAL_FONT_KEY, selectedFont.name);
             GlobalFontManager.GlobalFontData = LoadFontAsset(selectedFont.name);
         }
 
         /// <summary>
         /// Load a FontData object from Assets/SAVE_PATH.
-        /// <para>returns: FontData</para>
         /// </summary>
+        /// <param name="assetName">name of the FontData asset to load.</param>
+        /// <returns>The loaded FontData asset</returns>
         public static FontData LoadFontAsset(string assetName)
         {                       
             FontData data = (FontData)EditorGUIUtility.Load(
@@ -57,6 +62,11 @@ namespace GTS.GlobalUIFont
 
         #region private methods
 
+        /// <summary>
+        /// Check if the current file exists.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns>true if file exists</returns>
         private static bool IfFileExists(string fileName)
         {
             return File.Exists(string.Format("{0}{1}{2}.asset", Application.dataPath, GlobalFontConstants.SAVE_PATH, fileName));
@@ -65,6 +75,7 @@ namespace GTS.GlobalUIFont
         /// <summary>
         /// Save the currently selected FontData, GlobalFontData, and save the name in EditorPrefs.
         /// </summary>
+        /// <param name="font">Font used to create the new FontData asset.</param>
         private static void SaveFontAsset(Font font)
         {
             EditorPrefs.SetString(GlobalFontConstants.GLOBAL_FONT_KEY, font.name);
@@ -93,6 +104,9 @@ namespace GTS.GlobalUIFont
             //Resources.UnloadUnusedAssets();
         }
 
+        /// <summary>
+        /// Create a FontAsset for built-in Arial font.
+        /// </summary>
         public static void CreateDefaultFontAsset()
         {
             Font f = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;

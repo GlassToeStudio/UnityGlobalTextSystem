@@ -1,82 +1,95 @@
-﻿using UnityEngine;
+﻿/*
+================================================================================
+    Product:    Unity-Set-Global_UI-Text_Font
+    Developer:  GlassToeStudio@gmail.com
+    Source:     https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font
+    Company:    GlassToeStudio
+    Website:    http://glasstoestudio.weebly.com/
+    Date:       June 19, 2018
+=================================================================================
+    MIT License
+================================================================================
+*/
+
+using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
-using System;
 using System.Collections.Generic;
+using GTS.GlobalUIFont.Tools;
 
+/// <summary>
+/// Small System to change the global font from "Arial" to another font of your choosing.
+/// </summary>
 namespace GTS.GlobalUIFont
 {
-    public class GlobalFontSystem
+    public static class GlobalFontSystem
     {
-        /// <summary>
-        /// Loop through every Text object in the scene and change its font.
-        /// </summary>
+        #region public methods
+
         public static void ChangeAllFonts()
         {
-            ChangeAllT(TextProperty.FONT);
+            ChangeProperty(TextProperty.FONT);
         }
 
         public static void ChangeAllFontStyle()
         {
-            ChangeAllT(TextProperty.FONT_STYLE);
+            ChangeProperty(TextProperty.FONT_STYLE);
         }
 
         public static void ChangeAllFontSize()
         {
-            ChangeAllT(TextProperty.FONT_SIZE);
+            ChangeProperty(TextProperty.FONT_SIZE);
         }
 
         public static void ChangeAllLineSpacing()
         {
-            ChangeAllT(TextProperty.LINE_SPACING);
+            ChangeProperty(TextProperty.LINE_SPACING);
         }
 
         public static void ChangeAllRichText()
         {
-            ChangeAllT(TextProperty.RICH_TEXT);
+            ChangeProperty(TextProperty.RICH_TEXT);
         }
 
         public static void ChangeAllAlignment()
         {
-            ChangeAllT(TextProperty.ALIGNMENT);
+            ChangeProperty(TextProperty.ALIGNMENT);
         }
 
         public static void ChangeAllAlignByGeometry()
         {
-            ChangeAllT(TextProperty.ALIGN_BY_GEOMETRY);
+            ChangeProperty(TextProperty.ALIGN_BY_GEOMETRY);
         }
 
         public static void ChangeAllHorizontalOverflow()
         {
-            ChangeAllT(TextProperty.HORIZONTAL_OVERFLOW);
+            ChangeProperty(TextProperty.HORIZONTAL_OVERFLOW);
         }
 
         public static void ChangeAllVerticalOverflow()
         {
-            ChangeAllT(TextProperty.VERTICAL_OVERFLOW);
+            ChangeProperty(TextProperty.VERTICAL_OVERFLOW);
         }
 
         public static void ChangeAllBestFit()
         {
-            ChangeAllT(TextProperty.BEST_FIT);
+            ChangeProperty(TextProperty.BEST_FIT);
         }
 
         public static void ChangeAllColor()
         {
-            ChangeAllT(TextProperty.COLOR);
+            ChangeProperty(TextProperty.COLOR);
         }
 
         public static void ChangeAllMaterial()
         {
-            ChangeAllT(TextProperty.MATERIAL);
+            ChangeProperty(TextProperty.MATERIAL);
         }
 
         public static void ChangeAllRaycastTarget()
         {
-            ChangeAllT(TextProperty.RAYCAST);
+            ChangeProperty(TextProperty.RAYCAST);
         }
-
-
 
         /// <summary>
         /// Change Every property of the Text to the saved FontData.
@@ -89,7 +102,6 @@ namespace GTS.GlobalUIFont
             textObject.SetFont(GlobalFontData);
             textObject.SetFontSize(GlobalFontData);
             textObject.SetFontSize(GlobalFontData);
-
             textObject.lineSpacing = GlobalFontData.lineSpacing;
             textObject.supportRichText = GlobalFontData.supportRichText;
 
@@ -100,14 +112,71 @@ namespace GTS.GlobalUIFont
             textObject.resizeTextForBestFit = GlobalFontData.resizeTextForBestFit;
 
             textObject.SetFontColor(GlobalFontData);
-
             textObject.material = GlobalFontData.material;
             textObject.raycastTarget = GlobalFontData.raycastTarget;
         }
 
+        /// <summary>
+        /// Change Text property of this Text based on TextProperty Type.
+        /// </summary>
+        public static void ChangeProperty(this Text t, TextProperty prop)
+        {
+            FontData GlobalFontData = GlobalFontManager.GlobalFontData;
+
+            switch(prop)
+            {
+                case TextProperty.FONT:
+                    DoAction(t, t.font, GlobalFontData.font, prop);
+                    break;
+                case TextProperty.FONT_STYLE:
+                    DoAction(t, t.fontStyle, GlobalFontData.fontStyle, prop);
+                    break;
+                case TextProperty.FONT_SIZE:
+                    DoAction(t, t.fontSize, GlobalFontData.fontSize, prop);
+                    break;
+                case TextProperty.LINE_SPACING:
+                    DoAction(t, t.lineSpacing, GlobalFontData.lineSpacing, prop);
+                    break;
+                case TextProperty.RICH_TEXT:
+                    DoAction(t, t.supportRichText, GlobalFontData.supportRichText, prop);
+                    break;
+                case TextProperty.ALIGNMENT:
+                    DoAction(t, t.alignment, GlobalFontData.alignment, prop);
+                    break;
+                case TextProperty.ALIGN_BY_GEOMETRY:
+                    DoAction(t, t.alignByGeometry, GlobalFontData.alignByGeometry, prop);
+                    break;
+                case TextProperty.HORIZONTAL_OVERFLOW:
+                    DoAction(t, t.horizontalOverflow, GlobalFontData.horizontalOverflow, prop);
+                    break;
+                case TextProperty.VERTICAL_OVERFLOW:
+                    DoAction(t, t.verticalOverflow, GlobalFontData.verticalOverflow, prop);
+                    break;
+                case TextProperty.BEST_FIT:
+                    DoAction(t, t.resizeTextForBestFit, GlobalFontData.resizeTextForBestFit, prop);
+                    break;
+                case TextProperty.COLOR:
+                    DoAction(t, t.color, GlobalFontData.color, prop);
+                    break;
+                case TextProperty.MATERIAL:
+                    DoAction(t, t.material, GlobalFontData.material, prop);
+                    break;
+                case TextProperty.RAYCAST:
+                    DoAction(t, t.raycastTarget, GlobalFontData.raycastTarget, prop);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #endregion
+
         #region private
 
-        private static void ChangeAllT(TextProperty prop)
+        /// <summary>
+        /// Change Text property of all Text based on TextProperty Type.
+        /// </summary>
+        private static void ChangeProperty(TextProperty prop)
         {
             FontData GlobalFontData = GlobalFontManager.GlobalFontData;
 
@@ -167,6 +236,17 @@ namespace GTS.GlobalUIFont
             ShowMessge(all, changed);
         }
 
+        /// <summary>
+        /// Call the appropriate method to change this propert type T.
+        /// </summary>
+        private static void DoAction<T>(this Text t, T fromValue, T toValue, TextProperty prop)
+        {
+            int noCounter = 0;
+            DoAction(t, fromValue, toValue, prop, ref noCounter);
+        }
+        /// <summary>
+        /// Call the appropriate method to change this propert type T.
+        /// </summary>
         private static void DoAction<T>(Text t, T fromValue, T toValue, TextProperty prop, ref int compareValues)
         {
             if(!EqualityComparer<T>.Default.Equals(fromValue, toValue))
@@ -185,34 +265,34 @@ namespace GTS.GlobalUIFont
                         t.SetFontSize(toValue);
                         break;
                     case TextProperty.LINE_SPACING:
-                        t.lineSpacing = Convert.ToSingle(toValue);
+                        t.SetLineSpacing(toValue);
                         break;
                     case TextProperty.RICH_TEXT:
-                        t.supportRichText = Convert.ToBoolean(toValue);
+                        t.SetRichText(toValue);
                         break;
                     case TextProperty.ALIGNMENT:
-                        t.alignment = (TextAnchor)Enum.Parse(typeof(T), toValue.ToString());
+                        t.SetAlignment(toValue);
                         break;
                     case TextProperty.ALIGN_BY_GEOMETRY:
-                        t.alignByGeometry = Convert.ToBoolean(toValue);
+                        t.SetAlignByGeometry(toValue);
                         break;
                     case TextProperty.HORIZONTAL_OVERFLOW:
-                        t.horizontalOverflow = (HorizontalWrapMode)Enum.Parse(typeof(T), toValue.ToString());
+                        t.SetHorizontalOverflow(toValue);
                         break;
                     case TextProperty.VERTICAL_OVERFLOW:
-                        t.verticalOverflow = (VerticalWrapMode)Enum.Parse(typeof(T), toValue.ToString());
+                        t.SetVerticalOverflow(toValue);
                         break;
                     case TextProperty.BEST_FIT:
-                        t.resizeTextForBestFit = Convert.ToBoolean(toValue);
+                        t.SetBestFit(toValue);
                         break;
                     case TextProperty.COLOR:
                         t.SetFontColor(toValue);
                         break;
                     case TextProperty.MATERIAL:
-                        t.material = (Material)Convert.ChangeType(toValue, typeof(Material));
+                        t.SetMaterial(toValue);
                         break;
                     case TextProperty.RAYCAST:
-                        t.raycastTarget = Convert.ToBoolean(toValue);
+                        t.SetRaycastTarget(toValue);
                         break;
                     default:
                         break;
@@ -220,11 +300,14 @@ namespace GTS.GlobalUIFont
             }
         }
 
+        /// <summary>
+        /// Display total text objects found, and the total changed.
+        /// </summary>
         private static void ShowMessge(int all, int changed)
         {
             Debug.Log(
                 string.Format(
-                    "{0} Total Text objects found. {1} Total fonts size changed!",
+                    "{0} Total Text objects found. {1} Total objects changed!",
                     all,
                     changed
                     ));

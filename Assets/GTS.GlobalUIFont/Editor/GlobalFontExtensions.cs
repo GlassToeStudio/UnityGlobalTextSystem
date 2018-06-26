@@ -18,13 +18,17 @@ using UnityEngine.UI;
 /// <summary>
 /// Small System to change the global font from "Arial" to another font of your choosing.
 /// </summary>
-namespace GTS.GlobalUIFont
+namespace GTS.GlobalUIFont.Tools
 {
     /// <summary>
     /// Various helper methods for the Text class.
     /// </summary>
     public static class GlobalFontExtensions
     {
+        // Character
+
+        #region SetFont()
+
         /// <summary>
         /// Set the Font of this Text object with the passed in value.
         /// </summary>
@@ -61,6 +65,10 @@ namespace GTS.GlobalUIFont
         {
             t.SetFont(toValue as Font);
         }
+
+        #endregion
+
+        #region SetFontStyle()
 
         /// <summary>
         /// Set the FontStyle of this Text object with the passed in value.
@@ -99,6 +107,9 @@ namespace GTS.GlobalUIFont
             t.SetFontStyle((FontStyle)Enum.Parse(typeof(T), toValue.ToString()));
         }
         
+        #endregion
+
+        #region SetFontSize()
 
         /// <summary>
         /// Set the FontSize of this Text object with the passed in value.
@@ -137,6 +148,9 @@ namespace GTS.GlobalUIFont
             t.SetFontSize(Convert.ToInt32(toValue));
         }
 
+        #endregion
+
+        #region SetLineSpacing()
 
         /// <summary>
         /// Set the Line Spacing of this Text object with the passed in value.
@@ -165,9 +179,22 @@ namespace GTS.GlobalUIFont
         {
             t.SetLineSpacing(fontData.lineSpacing);
         }
+        /// <summary>
+        /// Set the Line Spacing of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t">this Text object</param>
+        /// <param name="fontData">The FontData with the Line Spacing that this Text object will be set.</param>
+        public static void SetLineSpacing<T>(this Text t, T toValue)
+        {
+            t.SetLineSpacing(Convert.ToSingle(toValue));
+        }
+
+        #endregion
+
+        #region SetRichText()
 
         /// <summary>
-        /// 
+        /// Set supportRichText of this Text object with the passed in value.
         /// </summary>
         /// <param name="t"></param>
         /// <param name="supportRichText"></param>
@@ -176,7 +203,7 @@ namespace GTS.GlobalUIFont
             t.supportRichText = supportRichText;
         }
         /// <summary>
-        /// 
+        /// Set supportRichText of this Text object with the passed in value.
         /// </summary>
         /// <param name="t"></param>
         /// <param name="text"></param>
@@ -185,7 +212,7 @@ namespace GTS.GlobalUIFont
             t.SetRichText(text.supportRichText);
         }
         /// <summary>
-        /// 
+        /// Set supportRichText of this Text object with the passed in value.
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
@@ -193,9 +220,234 @@ namespace GTS.GlobalUIFont
         {
             t.SetRichText(fontData.supportRichText);
         }
+        /// <summary>
+        /// Set supportRichText of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetRichText<T>(this Text t, T toValue)
+        {
+            t.SetRichText(Convert.ToBoolean(toValue));
+        }
+
+        #endregion
+
+        // Paragraph
+
+        #region SetAlignment()
 
         /// <summary>
-        /// 
+        /// Set alignment of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="textAnchor"></param>
+        public static void SetAlignment(this Text t, TextAnchor textAnchor)
+        {
+            t.alignment = textAnchor;
+        }
+        /// <summary>
+        /// Set alignment of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="text"></param>
+        public static void SetAlignment(this Text t, Text text)
+        {
+            t.SetAlignment(text.alignment);
+        }
+        /// <summary>
+        /// Set alignment of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetAlignment(this Text t, FontData fontData)
+        {
+            t.SetAlignment(fontData.alignment);
+        }
+        /// <summary>
+        /// Set alignment of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="toValue"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void SetAlignment<T>(this Text t, T toValue)
+        {
+            t.SetAlignment((TextAnchor)Enum.Parse(typeof(T), toValue.ToString()));
+        }
+
+        #endregion
+
+        #region SetAlignByGeometry()
+        
+        /// <summary>
+        /// Set the alignment by geometry property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="alignByGeometry"></param>
+        public static void SetAlignByGeometry(this Text t, bool alignByGeometry)
+        {
+            t.alignByGeometry = alignByGeometry;
+        }
+        /// <summary>
+        /// Set the alignment by geometry property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="text"></param>
+        public static void SetAlignByGeometry(this Text t, Text text)
+        {
+            t.SetAlignByGeometry(text.alignByGeometry);
+        }
+        /// <summary>
+        /// Set the alignment by geometry property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetAlignByGeometry(this Text t, FontData fontData)
+        {
+            t.SetAlignByGeometry(fontData.alignByGeometry);
+        }
+        /// <summary>
+        /// Set the alignment by geometry property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="toValue"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void SetAlignByGeometry<T>(this Text t, T toValue)
+        {
+            t.SetAlignByGeometry(Convert.ToBoolean(toValue));
+        }
+
+        #endregion
+
+        #region SetHorizontalOverflow()
+
+        /// <summary>
+        /// Set the horizontal overflow mode of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="horizontalOverflow"></param>
+        public static void SetHorizontalOverflow(this Text t, HorizontalWrapMode horizontalOverflow)
+        {
+            t.horizontalOverflow = horizontalOverflow;
+        }
+        /// <summary>
+        /// Set the horizontal overflow mode of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="text"></param>
+        public static void SetHorizontalOverflow(this Text t, Text text)
+        {
+            t.SetHorizontalOverflow(text.horizontalOverflow);
+        }
+        /// <summary>
+        /// Set the horizontal overflow mode of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetHorizontalOverflow(this Text t, FontData fontData)
+        {
+            t.SetHorizontalOverflow(fontData.horizontalOverflow);
+        }
+        /// <summary>
+        /// Set the horizontal overflow mode of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="toValue"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void SetHorizontalOverflow<T>(this Text t, T toValue)
+        {
+            t.SetHorizontalOverflow((HorizontalWrapMode)Enum.Parse(typeof(T), toValue.ToString()));
+        }
+
+        #endregion
+
+        #region SetVerticalOverflow()
+
+        /// <summary>
+        /// Set the vertical overflow mode of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="verticalOverflow"></param>
+        public static void SetVerticalOverflow(this Text t, VerticalWrapMode verticalOverflow)
+        {
+            t.verticalOverflow = verticalOverflow;
+        }
+        /// <summary>
+        /// Set the vertical overflow mode of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="text"></param>
+        public static void SetVerticalOverflow(this Text t, Text text)
+        {
+            t.SetVerticalOverflow(text.verticalOverflow);
+        }
+        /// <summary>
+        /// Set the vertical overflow mode of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetVerticalOverflow(this Text t, FontData fontData)
+        {
+            t.SetVerticalOverflow(fontData.verticalOverflow);
+        }
+        /// <summary>
+        /// Set the vertical overflow mode of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="toValue"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void SetVerticalOverflow<T>(this Text t, T toValue)
+        {
+            t.SetVerticalOverflow((VerticalWrapMode)Enum.Parse(typeof(T), toValue.ToString()));
+        }
+
+        #endregion
+
+        #region SetBestFit()
+
+        /// <summary>
+        /// Set the resize for best fit property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="resizeTextForBestFit"></param>
+        public static void SetBestFit(this Text t, bool resizeTextForBestFit)
+        {
+            t.resizeTextForBestFit = resizeTextForBestFit;
+        }
+        /// <summary>
+        /// Set the resize for best fit property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="text"></param>
+        public static void SetBestFit(this Text t, Text text)
+        {
+            t.SetBestFit(text.resizeTextForBestFit);
+        }
+        /// <summary>
+        /// Set the resize for best fit property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetBestFit(this Text t, FontData fontData)
+        {
+            t.SetBestFit(fontData.resizeTextForBestFit);
+        }
+        /// <summary>
+        /// Set the resize for best fit property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="toValue"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void SetBestFit<T>(this Text t, T toValue)
+        {
+            t.SetBestFit(Convert.ToBoolean(toValue));
+        }
+
+        #endregion
+ 
+        #region SetFontColor()
+
+        /// <summary>
+        /// Set the Color of this Text object with the passed in value.
         /// </summary>
         /// <param name="t"></param>
         /// <param name="color"></param>
@@ -204,7 +456,7 @@ namespace GTS.GlobalUIFont
             t.color = color;
         }
         /// <summary>
-        /// 
+        /// Set the Color of this Text object with the passed in value.
         /// </summary>
         /// <param name="t"></param>
         /// <param name="text"></param>
@@ -213,7 +465,7 @@ namespace GTS.GlobalUIFont
             t.SetFontColor(text.color);
         }
         /// <summary>
-        /// 
+        /// Set the Color of this Text object with the passed in value.
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
@@ -222,7 +474,7 @@ namespace GTS.GlobalUIFont
             t.SetFontColor(fontData.color);
         }
         /// <summary>
-        /// 
+        /// Set the Color of this Text object with the passed in value.
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
@@ -231,38 +483,90 @@ namespace GTS.GlobalUIFont
             t.SetFontColor((Color)Convert.ChangeType(toValue, typeof(Color)));
         }
 
-        // Need the rest of the extensions.
+        #endregion
 
+        #region SetMaterial()
 
         /// <summary>
-        /// Compares this font size with the passed in value.
+        /// Set the material of this Text object with the passed in value.
         /// </summary>
-        /// <param name="t"> this Text object</param>
-        /// <param name="fontSize">The font size to that is being compared.</param>
-        /// <returns>true if font sizes are equal.</returns>
-        public static bool MatchFontSize(this Text t, int fontSize)
+        /// <param name="t"></param>
+        /// <param name="material"></param>
+        public static void SetMaterial(this Text t, Material material)
         {
-            return t.fontSize == fontSize;
+            t.material = material;
         }
         /// <summary>
-        /// Compares this font size with the passed in value.
+        /// Set the material of this Text object with the passed in value.
         /// </summary>
-        /// <param name="t"> this Text object</param>
-        /// <param name="text">The Text object font size to that is being compared.</param>
-        /// <returns>true if font sizes are equal.</returns>
-        public static bool MatchFontSize(this Text t, Text text)
+        /// <param name="t"></param>
+        /// <param name="text"></param>
+        public static void SetMaterial(this Text t, Text text)
         {
-            return t.MatchFontSize(text.fontSize);
+            t.SetMaterial(text.material);
         }
         /// <summary>
-        /// Compares this font size with the passed in value.
+        /// Set the material of this Text object with the passed in value.
         /// </summary>
-        /// <param name="t"> this Text object</param>
-        /// <param name="fontData">The FontData font size to that is being compared.</param>
-        /// <returns>true if font sizes are equal.</returns>
-        public static bool MatchFontSize(this Text t, FontData fontData)
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetMaterial(this Text t, FontData fontData)
         {
-            return t.MatchFontSize(fontData.fontSize);
+            t.SetMaterial(fontData.material);
         }
+        /// <summary>
+        /// Set the material of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="toValue"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void SetMaterial<T>(this Text t, T toValue)
+        {
+            t.SetMaterial((Material)Convert.ChangeType(toValue, typeof(Material)));
+        }
+
+        #endregion
+        
+        #region SetRaycastTarget()
+
+        /// <summary>
+        /// Set the raycast target property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="raycastTarget"></param>
+        public static void SetRaycastTarget(this Text t, bool raycastTarget)
+        {
+            t.raycastTarget = raycastTarget;
+        }
+        /// <summary>
+        /// Set the raycast target property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="text"></param>
+        public static void SetRaycastTarget(this Text t, Text text)
+        {
+            t.SetRaycastTarget(text.raycastTarget);
+        }
+        /// <summary>
+        /// Set the raycast target property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="fontData"></param>
+        public static void SetRaycastTarget(this Text t, FontData fontData)
+        {
+            t.SetRaycastTarget(fontData.raycastTarget);
+        }
+        /// <summary>
+        /// Set the raycast target property of this Text object with the passed in value.
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="toValue"></param>
+        /// <typeparam name="T"></typeparam>
+        public static void SetRaycastTarget<T>(this Text t, T toValue)
+        {
+            t.SetRaycastTarget(Convert.ToBoolean(toValue));
+        }
+
+        #endregion
     }
 }

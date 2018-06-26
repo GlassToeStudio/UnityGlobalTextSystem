@@ -13,11 +13,12 @@
 
 using UnityEngine;
 using UnityEditor;
+using GTS.GlobalUIFont.Tools;
 
 /// <summary>
 /// Small System to change the global font from "Arial" to another font of your choosing.
 /// </summary>
-namespace GTS.GlobalUIFont
+namespace GTS.GlobalUIFont.Menus
 {
     /// <summary>
     /// Custom Window to set the Global Font.
