@@ -32,8 +32,6 @@ namespace GTS.GlobalUIFont.Menus
         /// </summary>
         private static string fontDisplayName = GlobalFontConstants.ARIAL;
 
-        Color fontColor;
-
         #endregion
 
         #region init

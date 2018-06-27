@@ -104,6 +104,7 @@ namespace GTS.GlobalUIFont
             }
             //textObject.text = GlobalFontData.text;
 
+            Undo.RecordObject(textObject, "Change all properties");
             textObject.SetFont(GlobalFontData);
             textObject.SetFontSize(GlobalFontData);
             textObject.SetFontSize(GlobalFontData);
@@ -270,42 +271,55 @@ namespace GTS.GlobalUIFont
                 switch(prop)
                 {
                     case TextProperty.FONT:
+                        Undo.RecordObject(t, "Set font");
                         t.SetFont(toValue);
                         break;
                     case TextProperty.FONT_STYLE:
+                        Undo.RecordObject(t, "Set font style");
                         t.SetFontStyle(toValue);
                         break;
                     case TextProperty.FONT_SIZE:
+                        Undo.RecordObject(t, "Set font size");
                         t.SetFontSize(toValue);
                         break;
                     case TextProperty.LINE_SPACING:
+                        Undo.RecordObject(t, "Set line spacing");
                         t.SetLineSpacing(toValue);
                         break;
                     case TextProperty.RICH_TEXT:
+                        Undo.RecordObject(t, "Set rich text");
                         t.SetRichText(toValue);
                         break;
                     case TextProperty.ALIGNMENT:
+                        Undo.RecordObject(t, "Set alignment");
                         t.SetAlignment(toValue);
                         break;
                     case TextProperty.ALIGN_BY_GEOMETRY:
+                        Undo.RecordObject(t, "Set align by geometry");
                         t.SetAlignByGeometry(toValue);
                         break;
                     case TextProperty.HORIZONTAL_OVERFLOW:
+                        Undo.RecordObject(t, "Set horizontal overflow");
                         t.SetHorizontalOverflow(toValue);
                         break;
                     case TextProperty.VERTICAL_OVERFLOW:
+                        Undo.RecordObject(t, "Set vertical overflow");
                         t.SetVerticalOverflow(toValue);
                         break;
                     case TextProperty.BEST_FIT:
+                        Undo.RecordObject(t, "Set best fit");
                         t.SetBestFit(toValue);
                         break;
                     case TextProperty.COLOR:
+                        Undo.RecordObject(t, "Set color");
                         t.SetFontColor(toValue);
                         break;
                     case TextProperty.MATERIAL:
+                        Undo.RecordObject(t, "Set material");
                         t.SetMaterial(toValue);
                         break;
                     case TextProperty.RAYCAST:
+                        Undo.RecordObject(t, "Set raycast");
                         t.SetRaycastTarget(toValue);
                         break;
                     default:
