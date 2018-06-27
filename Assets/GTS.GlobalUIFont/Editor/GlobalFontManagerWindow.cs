@@ -115,7 +115,7 @@ namespace GTS.GlobalUIFont.Menus
                     fontDisplayName = selectedFont.name;
                 }
 
-                this.Repaint();
+                this.RepaintAll();
 
                 GlobalFontListener.Listen();
             }
