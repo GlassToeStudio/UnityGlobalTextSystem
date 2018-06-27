@@ -105,6 +105,10 @@ namespace GTS.GlobalUIFont.Menus
                 if(EditorGUIUtility.GetObjectPickerObject() != null)
                 {
                     var selectedFont = (Font)EditorGUIUtility.GetObjectPickerObject();
+                    if(selectedFont == null)
+                    {
+                        Debug.Log("Why you pick none");
+                    }
 
                     SetGlobalFontData(selectedFont);
 
@@ -141,7 +145,14 @@ namespace GTS.GlobalUIFont.Menus
             {
                 EditorGUIUtility.ShowObjectPicker<Font>(null, true, "", GUIUtility.GetControlID(FocusType.Passive) + 100);
             }
-            EditorGUILayout.ObjectField(GlobalFontManager.GlobalFontData.font, typeof(Font), true);
+            if(GlobalFontManager.GlobalFontData != null)
+            {
+                EditorGUILayout.ObjectField(GlobalFontManager.GlobalFontData.font, typeof(Font), true);
+            }
+            else
+            {
+                EditorGUILayout.ObjectField(null, typeof(Font), true);
+            }
         }
 
         /// <summary>
@@ -191,7 +202,14 @@ namespace GTS.GlobalUIFont.Menus
                 GlobalFontSystem.ChangeAllColor();
                 RepaintAll();
             }
-            GlobalFontManager.GlobalFontData.color = EditorGUILayout.ColorField(GlobalFontManager.GlobalFontData.color);
+            if(GlobalFontManager.GlobalFontData != null)
+            {
+                GlobalFontManager.GlobalFontData.color = EditorGUILayout.ColorField(GlobalFontManager.GlobalFontData.color);
+            }
+            else
+            {
+                EditorGUILayout.ColorField(Color.black);
+            }
         }
 
         /// <summary>
@@ -206,7 +224,14 @@ namespace GTS.GlobalUIFont.Menus
                 GlobalFontSystem.ChangeAllFontSize();
                 RepaintAll();
             }
-            GlobalFontManager.GlobalFontData.fontSize = EditorGUILayout.IntField(GlobalFontManager.GlobalFontData.fontSize);
+            if(GlobalFontManager.GlobalFontData != null)
+            {
+                GlobalFontManager.GlobalFontData.fontSize = EditorGUILayout.IntField(GlobalFontManager.GlobalFontData.fontSize);
+            }
+            else
+            {
+                EditorGUILayout.IntField(0);
+            }
         }
 
         /// <summary>

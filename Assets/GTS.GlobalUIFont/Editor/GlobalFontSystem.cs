@@ -97,6 +97,11 @@ namespace GTS.GlobalUIFont
         public static void InitializeNewTextObject(Text textObject)
         {
             FontData GlobalFontData = GlobalFontManager.GlobalFontData;
+
+            if(GlobalFontData == null)
+            {
+                return;
+            }
             //textObject.text = GlobalFontData.text;
 
             textObject.SetFont(GlobalFontData);
@@ -122,6 +127,10 @@ namespace GTS.GlobalUIFont
         public static void ChangeProperty(this Text t, TextProperty prop)
         {
             FontData GlobalFontData = GlobalFontManager.GlobalFontData;
+            if(GlobalFontData == null)
+            {
+                return;
+            }
 
             switch(prop)
             {
@@ -179,6 +188,11 @@ namespace GTS.GlobalUIFont
         private static void ChangeProperty(TextProperty prop)
         {
             FontData GlobalFontData = GlobalFontManager.GlobalFontData;
+
+            if(GlobalFontData == null)
+            {
+                return;
+            }
 
             var allTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
 

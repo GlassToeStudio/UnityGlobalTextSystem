@@ -53,6 +53,12 @@ namespace GTS.GlobalUIFont
         /// </summary>
         public static void Listen()
         {
+            if(!GlobalFontManager.HasGlobalFontData())
+            {
+                StopListening();
+                return;
+            }
+
             if(GlobalFontManager.GlobalFontData.name == GlobalFontConstants.ARIAL)
             {
                 StopListening();

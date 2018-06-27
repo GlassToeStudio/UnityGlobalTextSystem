@@ -132,88 +132,97 @@ namespace GTS.GlobalUIFont.Menus
         [MenuItem(menuName + "Change All Properties!", priority = 138, validate = true)]
         private static bool SetTextToCustomValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global font", priority = 138, validate = true)]
         private static bool SetTextToGlobalFontValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global font style", priority = 138, validate = true)]
         private static bool SetToGlobalFontStyleValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global font size", priority = 138, validate = true)]
         private static bool SetToGlobalFontSizeValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global line spacing", priority = 138, validate = true)]
         private static bool SetToGlobalLineSpacingValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global rich text support", priority = 138, validate = true)]
         private static bool SetToGlobalRichTextSupportValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global alignment", priority = 138, validate = true)]
         private static bool SetToGlobalalignmentValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global align by geometry", priority = 138, validate = true)]
         private static bool SetToGlobalAlignByGeometryValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global Horizontal Overflow", priority = 138, validate = true)]
         private static bool SetToGlobalHorizontalOverflowValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global Vertical Overflow", priority = 138, validate = true)]
         private static bool SetToGlobalVerticalOverflowValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global Best fit ", priority = 138, validate = true)]
         private static bool SetToGlobalBestFitValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global font color", priority = 138, validate = true)]
         private static bool SetToGlobalColorValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
+            
         }
 
         [MenuItem(menuName + "Set to global Material", priority = 138, validate = true)]
         private static bool SetToGlobalMaterialValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         [MenuItem(menuName + "Set to global Raycast option", priority = 138, validate = true)]
         private static bool SetToGlobalRaycastOptionValidator()
         {
-            return (Selection.activeGameObject.GetComponent<Text>() != null);
+            return isTextObject();
         }
 
         #endregion
 
+        private static bool isTextObject()
+        {
+            if(Selection.activeGameObject == null)
+            {
+                return false;
+            }
+            return (Selection.activeGameObject.GetComponent<Text>() != null);
+        }
     }
 }
