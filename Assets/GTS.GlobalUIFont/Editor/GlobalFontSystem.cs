@@ -319,12 +319,12 @@ namespace GTS.GlobalUIFont
         /// </summary>
         private static void ShowMessge(int all, int changed)
         {
-            Debug.Log(
-                string.Format(
-                    "{0} Total Text objects found. {1} Total objects changed!",
-                    all,
-                    changed
-                    ));
+        //    Debug.Log(
+        //        string.Format(
+        //            "{0} Total Text objects found. {1} Total objects changed!",
+        //            all,
+        //            changed
+        //            ));
         }
 
         #endregion

@@ -72,15 +72,15 @@ namespace GTS.GlobalUIFont.Menus
             // Show Global Font Name
             EditorGUILayout.LabelField("Global Font: ", fontDisplayName);
 
-            SelectFontButton();
-
             ResetFontButton();
 
+            SelectFont();
+            
             ChangeAllFontsButton();
 
             OnFontSelectorClosed();
 
-            ChangeAllFontsColorButton();
+            ChangeAllFontsColorRealTime();
 
             ChangeAllFontSizeButton();
 
@@ -124,7 +124,6 @@ namespace GTS.GlobalUIFont.Menus
         /// <summary>
         /// Checks if a FontData assets is created, else it creates one.
         /// </summary>
-        /// <param name="selectedFont"></param>
         private void SetGlobalFontData(Font selectedFont)
         {
             GlobalFontAssetManager.SetGlobalFont(selectedFont);
@@ -133,27 +132,6 @@ namespace GTS.GlobalUIFont.Menus
         #endregion
 
         #region buttons
-
-        /// <summary>
-        /// Open a Font selector and select a Font.
-        /// </summary>
-        private void SelectFontButton()
-        {
-            EditorGUILayout.Space();
-
-            if(GUILayout.Button("Select Font"))
-            {
-                EditorGUIUtility.ShowObjectPicker<Font>(null, true, "", GUIUtility.GetControlID(FocusType.Passive) + 100);
-            }
-            if(GlobalFontManager.GlobalFontData != null)
-            {
-                EditorGUILayout.ObjectField(GlobalFontManager.GlobalFontData.font, typeof(Font), true);
-            }
-            else
-            {
-                EditorGUILayout.ObjectField(null, typeof(Font), true);
-            }
-        }
 
         /// <summary>
         /// Reset to Unity standard font, "Arial".
@@ -177,6 +155,25 @@ namespace GTS.GlobalUIFont.Menus
         }
 
         /// <summary>
+        /// Open a Font selector and select a Font.
+        /// </summary>
+        private void SelectFont()
+        {
+            EditorGUILayout.Space();
+
+            GUILayout.Label("Select Font");
+
+            if(GlobalFontManager.GlobalFontData != null)
+            {
+                EditorGUILayout.ObjectField(GlobalFontManager.GlobalFontData.font, typeof(Font), true);
+            }
+            else
+            {
+                EditorGUILayout.ObjectField(null, typeof(Font), true);
+            }
+        }
+
+        /// <summary>
         /// Find all Text in the scene and change its font.
         /// </summary>
         private void ChangeAllFontsButton()
@@ -191,20 +188,20 @@ namespace GTS.GlobalUIFont.Menus
         }
 
         /// <summary>
-        /// 
+        /// Will gather all text objects in the scene and change their color in realtime.
         /// </summary>
-        private void ChangeAllFontsColorButton()
+        private void ChangeAllFontsColorRealTime()
         {
             EditorGUILayout.Space();
 
-            if(GUILayout.Button("Change All Fonts Color In Scene"))
-            {
-                GlobalFontSystem.ChangeAllColor();
-                RepaintAll();
-            }
+            GUILayout.Label("Change All Fonts Color In Scene");
+
             if(GlobalFontManager.GlobalFontData != null)
             {
                 GlobalFontManager.GlobalFontData.color = EditorGUILayout.ColorField(GlobalFontManager.GlobalFontData.color);
+                //test
+                GlobalFontSystem.ChangeAllColor();
+                RepaintAll();
             }
             else
             {
@@ -213,7 +210,7 @@ namespace GTS.GlobalUIFont.Menus
         }
 
         /// <summary>
-        /// 
+        /// Change the FontSize of evrey Text in the scene.
         /// </summary>
         private void ChangeAllFontSizeButton()
         {
@@ -235,7 +232,7 @@ namespace GTS.GlobalUIFont.Menus
         }
 
         /// <summary>
-        /// FClose this window
+        /// Close this window
         /// </summary>
         private void CloseWindowButton()
         {
@@ -248,7 +245,7 @@ namespace GTS.GlobalUIFont.Menus
         }
 
         /// <summary>
-        /// 
+        /// Make sure we repaint when chagnes happen.
         /// </summary>
         private void RepaintAll()
         {
