@@ -14,21 +14,18 @@
 using UnityEngine;
 
 /// <summary>
-/// Small System to change the global font from "Arial" to another font of your choosing.
-/// </summary>
-namespace GTS.GlobalUIFont
+/// Small System that provides useful funtionality to Unitys UI Text system.
+/// </summary>>
+namespace GTS.GlobalTextSystem
 {
     /// <summary>
-    /// ScriptableObject to hold the GlobalFontData. 
+    /// ScriptableObject to hold the global Text Settings. 
     /// </summary>
-    public class FontData : ScriptableObject
+    public class TextData : ScriptableObject
     {
         [TextArea]
         public string text;
 
-        /// <summary>
-        /// The font to be used as the Global UI text font. 
-        /// </summary>
         [Header("Character")]
         public Font font;
         public FontStyle fontStyle = FontStyle.Normal;
@@ -42,6 +39,7 @@ namespace GTS.GlobalUIFont
         public HorizontalWrapMode horizontalOverflow = HorizontalWrapMode.Overflow;
         public VerticalWrapMode verticalOverflow = VerticalWrapMode.Truncate;
         public bool resizeTextForBestFit = false;
+        [Space] // Could make custom Insoector for this.
         public int resizeTextMinSize = 0;
         public int resizeTextMaxSize = 60;
 

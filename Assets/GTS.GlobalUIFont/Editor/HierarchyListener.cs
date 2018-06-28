@@ -14,52 +14,35 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
-using GTS.GlobalUIFont.Tools;
+using GTS.GlobalTextSystem.Tools;
 
 /// <summary>
-/// Small System to change the global font from "Arial" to another font of your choosing.
+/// Small System that provides useful funtionality to Unitys UI Text system.
 /// </summary>
-namespace GTS.GlobalUIFont
+namespace GTS.GlobalTextSystem
 {
     /// <summary>
-    /// Class that will check every Text asset's Font
-    /// to see if it is the GlobalFontData.
+    /// Listen for the creation of new Text obejcts, change their font to the global font.
     /// </summary>
-    class GlobalFontListener
+    public class HierarchyListener
     {
-        #region properties
+        /// <summary> True when listening for hierarchy changes.</summary>
+        private bool isListening = false;
 
         /// <summary>
-        /// True when listening for hierarchy changes.
+        /// Listen for new text objects to be created, as long as we have some global data saved.
         /// </summary>
-        private static bool isListening;
-
-        #endregion
-
-
-        #region init
-
-        /// <summary>
-        /// Default static constructor.
-        /// </summary>
-        static GlobalFontListener()
+        public void Listen()
         {
-            // Nothing
-        }
-
-        /// <summary>
-        /// Load the GlobalFontData FontData (if it exists) and subscribe to the 
-        /// EditorApplication.hierarchyChanged Event.
-        /// </summary>
-        public static void Listen()
-        {
-            if(!GlobalFontManager.HasGlobalFontData())
+            // Nothing to change the font to
+            if(GlobalTextSettings.TextSettings == null)
             {
                 StopListening();
                 return;
             }
 
-            if(GlobalFontManager.GlobalFontData.name == GlobalFontConstants.ARIAL)
+            // No need to listen of the default font is Arial
+            if(GlobalTextSettings.TextSettings.name == StringLibrary.ARIAL)
             {
                 StopListening();
                 return;
@@ -68,25 +51,25 @@ namespace GTS.GlobalUIFont
             StartListening();
         }
 
-        #endregion
-
-
-        #region events
+        #region event
 
         /// <summary>
         /// Get newly created Text asset and get/set its font.
         /// </summary>
-        private static void OnHierarchyChanged()
+        private void OnHierarchyChanged()
         {
             // Do not run while in play mode!
             if(Application.isEditor && !Application.isPlaying)
             {
-                if(!IsValidObject() || !GlobalFontManager.HasGlobalFontData())
+                if(!IsValidObject() || GlobalTextSettings.TextSettings == null)
                 {
                     return;
                 }
 
-                Selection.activeGameObject.GetComponentInChildren<Text>(true).SetFont(GlobalFontManager.GlobalFontData.font);
+                // New text object created, update the static list of all Text objects.
+                GlobalTextSettings.AllTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+
+                Selection.activeGameObject.GetComponentInChildren<Text>(true).SetFont(GlobalTextSettings.TextSettings.font);
             }
         }
 
@@ -96,54 +79,54 @@ namespace GTS.GlobalUIFont
         #region private methods
 
         /// <summary>
-        /// Subscribe to the hierarchyChanged Event. IsListening = true;
+        /// Subscribe to the hierarchyChanged Event. isListening = true;
         /// </summary>
-        private static void StartListening()
+        private void StartListening()
         {
             if(!isListening)
             {
-            #if UNITY_2018_1_OR_NEWER
-
+                #if UNITY_2018_1_OR_NEWER
                 EditorApplication.hierarchyChanged += OnHierarchyChanged;
 
-            #else
-
+                #else
                 EditorApplication.hierarchyWindowChanged += OnHierarchyChanged;
 
-            #endif
+                #endif
 
                 isListening = true;
             }
         }
 
         /// <summary>
-        /// Un-subscribe from the hierarchyChanged Event. IsListening = false;
+        /// Un-subscribe from the hierarchyChanged Event. isListening = false;
         /// </summary>
-        private static void StopListening()
+        private void StopListening()
         {
             if(isListening)
             {
-            #if UNITY_2018_1_OR_NEWER
-
+                #if UNITY_2018_1_OR_NEWER
                 EditorApplication.hierarchyChanged -= OnHierarchyChanged;
 
-            #else
-
+                #else
                 EditorApplication.hierarchyWindowChanged -= OnHierarchyChanged;
 
-            #endif
+                #endif
+
                 isListening = false;
             }
         }
 
         /// <summary>
         /// Checks that we have a created object (we could be deleting objects)
-        /// And that the object, or its children, have Text.
+        /// and that the object, or its children, have Text.
         /// </summary>
-        private static bool IsValidObject()
+        private bool IsValidObject()
         {
             if(Selection.activeGameObject == null)
             {
+                // We deleted an object update the static list of all Text objects.
+                GlobalTextSettings.AllTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+
                 return false;
             }
 

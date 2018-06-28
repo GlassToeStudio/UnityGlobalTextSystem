@@ -12,9 +12,9 @@
 */
 
 /// <summary>
-/// Small System to change the global font from "Arial" to another font of your choosing.
+/// Collection of tools and helpers for our global text system.
 /// </summary>
-namespace GTS.GlobalUIFont.Tools
+namespace GTS.GlobalTextSystem.Tools
 {
     public enum TextProperty
     {

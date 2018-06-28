@@ -11,20 +11,24 @@
 ================================================================================
 */
 
-using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using GTS.GlobalUIFont.Tools;
 
 /// <summary>
-/// Small System to change the global font from "Arial" to another font of your choosing.
+/// Collection of tools and helpers for our global text system.
 /// </summary>
-namespace GTS.GlobalUIFont
+namespace GTS.GlobalTextSystem.Tools
 {
-    public static class GlobalFontSystem
+    /// <summary>
+    /// Some nasty code in here, beware!
+    /// </summary>
+    public static class PropertyLibrary
     {
+
         #region public methods
+
+        // Self explanitory naming.
 
         public static void ChangeAllFonts()
         {
@@ -92,34 +96,35 @@ namespace GTS.GlobalUIFont
         }
 
         /// <summary>
-        /// Change Every property of the Text to the saved FontData.
+        /// Change Every property of the Text to the saved TextData.
         /// </summary>
-        public static void InitializeNewTextObject(Text textObject)
+        public static void ChangeAllProperties(Text textObject)
         {
-            FontData GlobalFontData = GlobalFontManager.GlobalFontData;
+            var textSettings = GlobalTextSettings.TextSettings;
 
-            if(GlobalFontData == null)
+            if(textSettings == null)
             {
                 return;
             }
             //textObject.text = GlobalFontData.text;
 
             Undo.RecordObject(textObject, "Change all properties");
-            textObject.SetFont(GlobalFontData);
-            textObject.SetFontSize(GlobalFontData);
-            textObject.SetFontSize(GlobalFontData);
-            textObject.lineSpacing = GlobalFontData.lineSpacing;
-            textObject.supportRichText = GlobalFontData.supportRichText;
 
-            textObject.alignment = GlobalFontData.alignment;
-            textObject.alignByGeometry = GlobalFontData.alignByGeometry;
-            textObject.horizontalOverflow = GlobalFontData.horizontalOverflow;
-            textObject.verticalOverflow = GlobalFontData.verticalOverflow;
-            textObject.resizeTextForBestFit = GlobalFontData.resizeTextForBestFit;
+            textObject.SetFont(textSettings);
+            textObject.SetFontSize(textSettings);
+            textObject.SetFontSize(textSettings);
+            textObject.lineSpacing = textSettings.lineSpacing;
+            textObject.supportRichText = textSettings.supportRichText;
 
-            textObject.SetFontColor(GlobalFontData);
-            textObject.material = GlobalFontData.material;
-            textObject.raycastTarget = GlobalFontData.raycastTarget;
+            textObject.alignment = textSettings.alignment;
+            textObject.alignByGeometry = textSettings.alignByGeometry;
+            textObject.horizontalOverflow = textSettings.horizontalOverflow;
+            textObject.verticalOverflow = textSettings.verticalOverflow;
+            textObject.resizeTextForBestFit = textSettings.resizeTextForBestFit;
+
+            textObject.SetFontColor(textSettings);
+            textObject.material = textSettings.material;
+            textObject.raycastTarget = textSettings.raycastTarget;
         }
 
         /// <summary>
@@ -127,8 +132,9 @@ namespace GTS.GlobalUIFont
         /// </summary>
         public static void ChangeProperty(this Text t, TextProperty prop)
         {
-            FontData GlobalFontData = GlobalFontManager.GlobalFontData;
-            if(GlobalFontData == null)
+            var textSettings = GlobalTextSettings.TextSettings;
+
+            if(textSettings == null)
             {
                 return;
             }
@@ -136,43 +142,43 @@ namespace GTS.GlobalUIFont
             switch(prop)
             {
                 case TextProperty.FONT:
-                    DoAction(t, t.font, GlobalFontData.font, prop);
+                    DoAction(t, t.font, textSettings.font, prop);
                     break;
                 case TextProperty.FONT_STYLE:
-                    DoAction(t, t.fontStyle, GlobalFontData.fontStyle, prop);
+                    DoAction(t, t.fontStyle, textSettings.fontStyle, prop);
                     break;
                 case TextProperty.FONT_SIZE:
-                    DoAction(t, t.fontSize, GlobalFontData.fontSize, prop);
+                    DoAction(t, t.fontSize, textSettings.fontSize, prop);
                     break;
                 case TextProperty.LINE_SPACING:
-                    DoAction(t, t.lineSpacing, GlobalFontData.lineSpacing, prop);
+                    DoAction(t, t.lineSpacing, textSettings.lineSpacing, prop);
                     break;
                 case TextProperty.RICH_TEXT:
-                    DoAction(t, t.supportRichText, GlobalFontData.supportRichText, prop);
+                    DoAction(t, t.supportRichText, textSettings.supportRichText, prop);
                     break;
                 case TextProperty.ALIGNMENT:
-                    DoAction(t, t.alignment, GlobalFontData.alignment, prop);
+                    DoAction(t, t.alignment, textSettings.alignment, prop);
                     break;
                 case TextProperty.ALIGN_BY_GEOMETRY:
-                    DoAction(t, t.alignByGeometry, GlobalFontData.alignByGeometry, prop);
+                    DoAction(t, t.alignByGeometry, textSettings.alignByGeometry, prop);
                     break;
                 case TextProperty.HORIZONTAL_OVERFLOW:
-                    DoAction(t, t.horizontalOverflow, GlobalFontData.horizontalOverflow, prop);
+                    DoAction(t, t.horizontalOverflow, textSettings.horizontalOverflow, prop);
                     break;
                 case TextProperty.VERTICAL_OVERFLOW:
-                    DoAction(t, t.verticalOverflow, GlobalFontData.verticalOverflow, prop);
+                    DoAction(t, t.verticalOverflow, textSettings.verticalOverflow, prop);
                     break;
                 case TextProperty.BEST_FIT:
-                    DoAction(t, t.resizeTextForBestFit, GlobalFontData.resizeTextForBestFit, prop);
+                    DoAction(t, t.resizeTextForBestFit, textSettings.resizeTextForBestFit, prop);
                     break;
                 case TextProperty.COLOR:
-                    DoAction(t, t.color, GlobalFontData.color, prop);
+                    DoAction(t, t.color, textSettings.color, prop);
                     break;
                 case TextProperty.MATERIAL:
-                    DoAction(t, t.material, GlobalFontData.material, prop);
+                    DoAction(t, t.material, textSettings.material, prop);
                     break;
                 case TextProperty.RAYCAST:
-                    DoAction(t, t.raycastTarget, GlobalFontData.raycastTarget, prop);
+                    DoAction(t, t.raycastTarget, textSettings.raycastTarget, prop);
                     break;
                 default:
                     break;
@@ -188,14 +194,14 @@ namespace GTS.GlobalUIFont
         /// </summary>
         private static void ChangeProperty(TextProperty prop)
         {
-            FontData GlobalFontData = GlobalFontManager.GlobalFontData;
+            var textSettings = GlobalTextSettings.TextSettings;
 
-            if(GlobalFontData == null)
+            if(textSettings == null)
             {
                 return;
             }
 
-            var allTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+            var allTextObjects = GlobalTextSettings.AllTextObjects;
 
             var all = allTextObjects.Length;
             var changed = 0;
@@ -205,43 +211,43 @@ namespace GTS.GlobalUIFont
                 switch(prop)
                 {
                     case TextProperty.FONT:
-                        DoAction(t, t.font, GlobalFontData.font, prop, ref changed);
+                        DoAction(t, t.font, textSettings.font, prop, ref changed);
                         break;
                     case TextProperty.FONT_STYLE:
-                        DoAction(t, t.fontStyle, GlobalFontData.fontStyle, prop, ref changed);
+                        DoAction(t, t.fontStyle, textSettings.fontStyle, prop, ref changed);
                         break;
                     case TextProperty.FONT_SIZE:
-                        DoAction(t, t.fontSize, GlobalFontData.fontSize, prop, ref changed);
+                        DoAction(t, t.fontSize, textSettings.fontSize, prop, ref changed);
                         break;
                     case TextProperty.LINE_SPACING:
-                        DoAction(t, t.lineSpacing, GlobalFontData.lineSpacing, prop, ref changed);
+                        DoAction(t, t.lineSpacing, textSettings.lineSpacing, prop, ref changed);
                         break;
                     case TextProperty.RICH_TEXT:
-                        DoAction(t, t.supportRichText, GlobalFontData.supportRichText, prop, ref changed);
+                        DoAction(t, t.supportRichText, textSettings.supportRichText, prop, ref changed);
                         break;
                     case TextProperty.ALIGNMENT:
-                        DoAction(t, t.alignment, GlobalFontData.alignment, prop, ref changed);
+                        DoAction(t, t.alignment, textSettings.alignment, prop, ref changed);
                         break;
                     case TextProperty.ALIGN_BY_GEOMETRY:
-                        DoAction(t, t.alignByGeometry, GlobalFontData.alignByGeometry, prop, ref changed);
+                        DoAction(t, t.alignByGeometry, textSettings.alignByGeometry, prop, ref changed);
                         break;
                     case TextProperty.HORIZONTAL_OVERFLOW:
-                        DoAction(t, t.horizontalOverflow, GlobalFontData.horizontalOverflow, prop, ref changed);
+                        DoAction(t, t.horizontalOverflow, textSettings.horizontalOverflow, prop, ref changed);
                         break;
                     case TextProperty.VERTICAL_OVERFLOW:
-                        DoAction(t, t.verticalOverflow, GlobalFontData.verticalOverflow, prop, ref changed);
+                        DoAction(t, t.verticalOverflow, textSettings.verticalOverflow, prop, ref changed);
                         break;
                     case TextProperty.BEST_FIT:
-                        DoAction(t, t.resizeTextForBestFit, GlobalFontData.resizeTextForBestFit, prop, ref changed);
+                        DoAction(t, t.resizeTextForBestFit, textSettings.resizeTextForBestFit, prop, ref changed);
                         break;
                     case TextProperty.COLOR:
-                        DoAction(t, t.color, GlobalFontData.color, prop, ref changed);
+                        DoAction(t, t.color, textSettings.color, prop, ref changed);
                         break;
                     case TextProperty.MATERIAL:
-                        DoAction(t, t.material, GlobalFontData.material, prop, ref changed);
+                        DoAction(t, t.material, textSettings.material, prop, ref changed);
                         break;
                     case TextProperty.RAYCAST:
-                        DoAction(t, t.raycastTarget, GlobalFontData.raycastTarget, prop, ref changed);
+                        DoAction(t, t.raycastTarget, textSettings.raycastTarget, prop, ref changed);
                         break;
                     default:
                         break;
@@ -252,15 +258,15 @@ namespace GTS.GlobalUIFont
         }
 
         /// <summary>
-        /// Call the appropriate method to change this propert type T.
+        /// Call the appropriate method on this Text to change its property type T.
         /// </summary>
         private static void DoAction<T>(this Text t, T fromValue, T toValue, TextProperty prop)
         {
-            int noCounter = 0;
+            var noCounter = 0;
             DoAction(t, fromValue, toValue, prop, ref noCounter);
         }
         /// <summary>
-        /// Call the appropriate method to change this propert type T.
+        /// Call the appropriate method to change this property type T.
         /// </summary>
         private static void DoAction<T>(Text t, T fromValue, T toValue, TextProperty prop, ref int compareValues)
         {
@@ -329,7 +335,7 @@ namespace GTS.GlobalUIFont
         }
 
         /// <summary>
-        /// Display total text objects found, and the total changed.
+        /// DEBUG ONLY: Display total text objects found, and the total changed.
         /// </summary>
         private static void ShowMessge(int all, int changed)
         {

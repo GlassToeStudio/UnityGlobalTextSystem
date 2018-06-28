@@ -16,14 +16,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Small System to change the global font from "Arial" to another font of your choosing.
+/// Collection of tools and helpers for our global text system.
 /// </summary>
-namespace GTS.GlobalUIFont.Tools
+namespace GTS.GlobalTextSystem.Tools
 {
     /// <summary>
-    /// Various helper methods for the Text class.
+    /// Various helper methods for the Text class. Too many really.
     /// </summary>
-    public static class GlobalFontExtensions
+    public static class TextExtensionsLibrary
     {
         // Character
 
@@ -51,8 +51,8 @@ namespace GTS.GlobalUIFont.Tools
         /// Set the Font of this Text object with the passed in value.
         /// </summary>
         /// <param name="t"> this Text object</param>
-        /// <param name="fontData">The FontData with the font that this Text object will be set.</param>
-        public static void SetFont(this Text t, FontData fontData)
+        /// <param name="fontData">The TextData with the font that this Text object will be set.</param>
+        public static void SetFont(this Text t, TextData fontData)
         {
             t.SetFont(fontData.font);
         }
@@ -92,8 +92,8 @@ namespace GTS.GlobalUIFont.Tools
         /// Set the FontStyle of this Text object with the passed in value.
         /// </summary>
         /// <param name="t">this Text object</param>
-        /// <param name="fontData">The FontData with FontStyle that this Text object will be set.</param>
-        public static void SetFontStyle(this Text t, FontData fontData)
+        /// <param name="fontData">The TextData with FontStyle that this Text object will be set.</param>
+        public static void SetFontStyle(this Text t, TextData fontData)
         {
             t.SetFontStyle(fontData.fontStyle);
         }
@@ -101,7 +101,7 @@ namespace GTS.GlobalUIFont.Tools
         /// Set the FontStyle of this Text object with the passed in value.
         /// </summary>
         /// <param name="t">this Text object</param>
-        /// <param name="fontData">The FontData with FontStyle that this Text object will be set.</param>
+        /// <param name="fontData">The TextData with FontStyle that this Text object will be set.</param>
         public static void SetFontStyle<T>(this Text t, T toValue)
         {
             t.SetFontStyle((FontStyle)Enum.Parse(typeof(T), toValue.ToString()));
@@ -133,8 +133,8 @@ namespace GTS.GlobalUIFont.Tools
         /// Set the FontSize of this Text object with the passed in value.
         /// </summary>
         /// <param name="t">this Text object</param>
-        /// <param name="fontData">The FontData with the FontSize that this Text object will be set.</param>
-        public static void SetFontSize(this Text t, FontData fontData)
+        /// <param name="fontData">The TextData with the FontSize that this Text object will be set.</param>
+        public static void SetFontSize(this Text t, TextData fontData)
         {
             t.SetFontSize(fontData.fontSize);
         }
@@ -142,7 +142,7 @@ namespace GTS.GlobalUIFont.Tools
         /// Set the FontSize of this Text object with the passed in value.
         /// </summary>
         /// <param name="t">this Text object</param>
-        /// <param name="fontData">The FontData with the T that this Text object will be set.</param>
+        /// <param name="fontData">The TextData with the T that this Text object will be set.</param>
         public static void SetFontSize<T>(this Text t, T toValue)
         {
             t.SetFontSize(Convert.ToInt32(toValue));
@@ -174,8 +174,8 @@ namespace GTS.GlobalUIFont.Tools
         /// Set the Line Spacing of this Text object with the passed in value.
         /// </summary>
         /// <param name="t">this Text object</param>
-        /// <param name="fontData">The FontData with the Line Spacing that this Text object will be set.</param>
-        public static void SetLineSpacing(this Text t, FontData fontData)
+        /// <param name="fontData">The TextData with the Line Spacing that this Text object will be set.</param>
+        public static void SetLineSpacing(this Text t, TextData fontData)
         {
             t.SetLineSpacing(fontData.lineSpacing);
         }
@@ -183,7 +183,7 @@ namespace GTS.GlobalUIFont.Tools
         /// Set the Line Spacing of this Text object with the passed in value.
         /// </summary>
         /// <param name="t">this Text object</param>
-        /// <param name="fontData">The FontData with the Line Spacing that this Text object will be set.</param>
+        /// <param name="fontData">The TextData with the Line Spacing that this Text object will be set.</param>
         public static void SetLineSpacing<T>(this Text t, T toValue)
         {
             t.SetLineSpacing(Convert.ToSingle(toValue));
@@ -216,7 +216,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetRichText(this Text t, FontData fontData)
+        public static void SetRichText(this Text t, TextData fontData)
         {
             t.SetRichText(fontData.supportRichText);
         }
@@ -259,7 +259,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetAlignment(this Text t, FontData fontData)
+        public static void SetAlignment(this Text t, TextData fontData)
         {
             t.SetAlignment(fontData.alignment);
         }
@@ -301,7 +301,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetAlignByGeometry(this Text t, FontData fontData)
+        public static void SetAlignByGeometry(this Text t, TextData fontData)
         {
             t.SetAlignByGeometry(fontData.alignByGeometry);
         }
@@ -343,7 +343,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetHorizontalOverflow(this Text t, FontData fontData)
+        public static void SetHorizontalOverflow(this Text t, TextData fontData)
         {
             t.SetHorizontalOverflow(fontData.horizontalOverflow);
         }
@@ -385,7 +385,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetVerticalOverflow(this Text t, FontData fontData)
+        public static void SetVerticalOverflow(this Text t, TextData fontData)
         {
             t.SetVerticalOverflow(fontData.verticalOverflow);
         }
@@ -427,7 +427,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetBestFit(this Text t, FontData fontData)
+        public static void SetBestFit(this Text t, TextData fontData)
         {
             t.SetBestFit(fontData.resizeTextForBestFit);
         }
@@ -469,7 +469,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetFontColor(this Text t, FontData fontData)
+        public static void SetFontColor(this Text t, TextData fontData)
         {
             t.SetFontColor(fontData.color);
         }
@@ -510,7 +510,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetMaterial(this Text t, FontData fontData)
+        public static void SetMaterial(this Text t, TextData fontData)
         {
             t.SetMaterial(fontData.material);
         }
@@ -552,7 +552,7 @@ namespace GTS.GlobalUIFont.Tools
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fontData"></param>
-        public static void SetRaycastTarget(this Text t, FontData fontData)
+        public static void SetRaycastTarget(this Text t, TextData fontData)
         {
             t.SetRaycastTarget(fontData.raycastTarget);
         }
