@@ -13,7 +13,8 @@
 
 using UnityEditor;
 using UnityEngine.UI;
-using GTS.GlobalTextSystem.Tools;
+using GTS.GlobalTextSystem.Data;
+using GTS.GlobalTextSystem.Libraries;
 
 /// <summary>
 /// Menus for controlling the properties of one or all Text objects.

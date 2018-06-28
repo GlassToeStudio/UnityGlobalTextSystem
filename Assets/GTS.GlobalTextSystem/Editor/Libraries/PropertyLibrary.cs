@@ -14,11 +14,13 @@
 using UnityEditor;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using GTS.GlobalTextSystem.Data;
+using GTS.GlobalTextSystem.Tools;
 
 /// <summary>
 /// Collection of tools and helpers for our global text system.
 /// </summary>
-namespace GTS.GlobalTextSystem.Tools
+namespace GTS.GlobalTextSystem.Libraries
 {
     /// <summary>
     /// Some nasty code in here, beware!

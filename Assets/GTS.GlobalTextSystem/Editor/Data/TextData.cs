@@ -16,7 +16,7 @@ using UnityEngine;
 /// <summary>
 /// Small System that provides useful functionality to Unity's UI Text system.
 /// </summary>>
-namespace GTS.GlobalTextSystem
+namespace GTS.GlobalTextSystem.Data
 {
     /// <summary>
     /// ScriptableObject to hold the global Text Settings. 

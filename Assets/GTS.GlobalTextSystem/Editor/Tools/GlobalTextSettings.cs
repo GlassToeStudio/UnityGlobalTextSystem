@@ -11,10 +11,12 @@
 ================================================================================
 */
 
+using GTS.GlobalTextSystem.Data;
+
 /// <summary>
 /// Small System that provides useful functionality to Unity's UI Text system.
 /// </summary>
-namespace GTS.GlobalTextSystem
+namespace GTS.GlobalTextSystem.Tools
 {
     /// <summary>
     /// Holds static references for our GlobalTextAsset and Text Objects.

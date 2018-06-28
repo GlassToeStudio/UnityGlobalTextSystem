@@ -14,7 +14,7 @@
 /// <summary>
 /// Collection of tools and helpers for our global text system.
 /// </summary>
-namespace GTS.GlobalTextSystem.Tools
+namespace GTS.GlobalTextSystem.Libraries
 {
     public class StringLibrary
     {

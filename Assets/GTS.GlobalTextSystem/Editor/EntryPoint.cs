@@ -16,6 +16,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using GTS.GlobalTextSystem.Tools;
 using GTS.GlobalTextSystem.Menus;
+using GTS.GlobalTextSystem.Libraries;
 
 /// <summary>
 /// Small System that provides useful functionality to Unity's UI Text system.

@@ -14,6 +14,7 @@
 using UnityEngine;
 using UnityEditor;
 using GTS.GlobalTextSystem.Tools;
+using GTS.GlobalTextSystem.Libraries;
 
 /// <summary>
 /// Menus for controlling the properties of one or all Text objects.

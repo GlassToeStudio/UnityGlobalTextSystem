@@ -14,6 +14,8 @@
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+using GTS.GlobalTextSystem.Data;
+using GTS.GlobalTextSystem.Libraries;
 
 /// <summary>
 /// Collection of tools and helpers for our global text system.

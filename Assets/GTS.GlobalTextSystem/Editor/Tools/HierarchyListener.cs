@@ -14,12 +14,12 @@
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
-using GTS.GlobalTextSystem.Tools;
+using GTS.GlobalTextSystem.Libraries;
 
 /// <summary>
 /// Small System that provides useful functionality to Unity's UI Text system.
 /// </summary>
-namespace GTS.GlobalTextSystem
+namespace GTS.GlobalTextSystem.Tools
 {
     /// <summary>
     /// Listen for the creation of new Text objects, change their font to the global font.
