@@ -28,6 +28,7 @@ namespace GTS.GlobalTextSystem.Tools
     {
         /// <summary> True when listening for hierarchy changes.</summary>
         private bool isListening = false;
+        private bool justHeard = false;
 
         /// <summary>
         /// Listen for new text objects to be created, as long as we have some global data saved.
@@ -58,6 +59,15 @@ namespace GTS.GlobalTextSystem.Tools
         /// </summary>
         private void OnHierarchyChanged()
         {
+            // For some reason, OnHierarchyChanged is called twice. 
+            if(justHeard == true)
+            {
+                justHeard = false;
+                return;
+            }
+
+            justHeard = true;
+
             // Do not run while in play mode!
             if(Application.isEditor && !Application.isPlaying)
             {

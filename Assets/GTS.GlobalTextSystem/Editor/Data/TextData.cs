@@ -24,7 +24,7 @@ namespace GTS.GlobalTextSystem.Data
     public class TextData : ScriptableObject
     {
         [TextArea]
-        public string text;
+        public string text = "This holds all of your settings for Text Objects!";
 
         [Header("Character")]
         public Font font;

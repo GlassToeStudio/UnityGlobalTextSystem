@@ -74,16 +74,14 @@ namespace GTS.GlobalTextSystem.Menus
             
             ChangeAllFontsColorRealTime();
 
-            //Event e = Event.current;
-            //if(e.commandName != "")
-            //    Debug.Log("Command recognized: " + e.commandName);
-
             ChangeAllFontSizeButton();
 
             CloseWindowButton();
 
             //TODO: Debug Only
             DeletePrefsButton();
+
+            RepaintAll();
         }
 
         /// <summary>
@@ -146,7 +144,8 @@ namespace GTS.GlobalTextSystem.Menus
                 fontDisplayName = selctedFont;
 
             }
-            this.RepaintAll();
+
+            RepaintAll();
         }
 
         /// <summary>
@@ -167,7 +166,7 @@ namespace GTS.GlobalTextSystem.Menus
                 EditorGUILayout.ObjectField(null, typeof(Font), true);
             }
 
-            this.RepaintAll();
+            RepaintAll();
         }
 
         /// <summary>
@@ -181,7 +180,8 @@ namespace GTS.GlobalTextSystem.Menus
             {
                 PropertyLibrary.ChangeAllFonts();
             }
-            this.RepaintAll();
+
+            RepaintAll();
         }
 
         /// <summary>
@@ -244,7 +244,8 @@ namespace GTS.GlobalTextSystem.Menus
             {
                 EditorGUILayout.IntField(0);
             }
-            this.RepaintAll();
+
+            RepaintAll();
         }
 
         /// <summary>
@@ -256,6 +257,7 @@ namespace GTS.GlobalTextSystem.Menus
 
             if(GUILayout.Button("Close"))
             {
+                RepaintAll();
                 this.Close();
             }
 
@@ -272,7 +274,8 @@ namespace GTS.GlobalTextSystem.Menus
             }
             SceneView.RepaintAll();
             UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
-            this.Repaint();
+
+            Repaint();
         }
 
         #endregion
