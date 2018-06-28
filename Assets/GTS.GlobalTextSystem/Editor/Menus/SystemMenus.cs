@@ -16,7 +16,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using GTS.GlobalTextSystem.Tools;
 
-/// <summary>/// Menus for controlling the properties of one or all Text objects./// </summary>ry>
+/// <summary>
+/// Menus for controlling the properties of one or all Text objects.
+/// </summary>
 namespace GTS.GlobalTextSystem.Menus
 { 
     public static class SystemMenus
@@ -133,7 +135,6 @@ namespace GTS.GlobalTextSystem.Menus
             return isTextObject();
         }
 
-        //[MenuItem(menuName + "Set to global FONT", priority = 138, validate = true)]
         [MenuItem(menuName + StringLibrary.MENU_FONT, priority = 138, validate = true)]
         private static bool SetTextToGlobalFontValidator()
         {

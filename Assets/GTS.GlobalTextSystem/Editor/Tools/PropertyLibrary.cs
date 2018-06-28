@@ -28,7 +28,7 @@ namespace GTS.GlobalTextSystem.Tools
 
         #region public methods
 
-        // Self explanitory naming.
+        // Self explanatory naming.
 
         public static void ChangeAllFonts()
         {
@@ -106,7 +106,6 @@ namespace GTS.GlobalTextSystem.Tools
             {
                 return;
             }
-            //textObject.text = GlobalFontData.text;
 
             Undo.RecordObject(textObject, "Change all properties");
 

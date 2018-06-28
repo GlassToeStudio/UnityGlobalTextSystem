@@ -29,7 +29,7 @@ namespace GTS.GlobalTextSystem.Tools
 
         /// <summary>
         /// Set the passed in Font as the Global Font and create a TextData asset.
-        /// Return the teh TextData asset of the same name.
+        /// Return the the TextData asset of the same name.
         /// </summary>
         public static TextData SetGlobalFont(Font selectedFont)
         {

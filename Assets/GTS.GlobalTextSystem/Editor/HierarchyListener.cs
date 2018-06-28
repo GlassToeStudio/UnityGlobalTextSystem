@@ -17,12 +17,12 @@ using UnityEngine.UI;
 using GTS.GlobalTextSystem.Tools;
 
 /// <summary>
-/// Small System that provides useful funtionality to Unitys UI Text system.
+/// Small System that provides useful functionality to Unity's UI Text system.
 /// </summary>
 namespace GTS.GlobalTextSystem
 {
     /// <summary>
-    /// Listen for the creation of new Text obejcts, change their font to the global font.
+    /// Listen for the creation of new Text objects, change their font to the global font.
     /// </summary>
     public class HierarchyListener
     {

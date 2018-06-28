@@ -14,7 +14,7 @@
 using UnityEngine;
 
 /// <summary>
-/// Small System that provides useful funtionality to Unitys UI Text system.
+/// Small System that provides useful functionality to Unity's UI Text system.
 /// </summary>>
 namespace GTS.GlobalTextSystem
 {
@@ -39,7 +39,8 @@ namespace GTS.GlobalTextSystem
         public HorizontalWrapMode horizontalOverflow = HorizontalWrapMode.Overflow;
         public VerticalWrapMode verticalOverflow = VerticalWrapMode.Truncate;
         public bool resizeTextForBestFit = false;
-        [Space] // Could make custom Insoector for this.
+        
+        [Space] // Could make custom Inspector for this.
         public int resizeTextMinSize = 0;
         public int resizeTextMaxSize = 60;
 
