@@ -18,7 +18,7 @@ using GTS.GlobalTextSystem.Tools;
 using GTS.GlobalTextSystem.Menus;
 
 /// <summary>
-/// Small System that provides useful funtionality to Unitys UI Text system.
+/// Small System that provides useful functionality to Unity's UI Text system.
 /// </summary>
 namespace GTS.GlobalTextSystem
 {
@@ -30,7 +30,7 @@ namespace GTS.GlobalTextSystem
     class EntryPoint
     {
         /// <summary>
-        /// Static constuctor. Created when Unity first loads.
+        /// Static constructor. Created when Unity first loads.
         /// </summary>
         static EntryPoint()
         {
@@ -40,7 +40,7 @@ namespace GTS.GlobalTextSystem
             // Load the saved global text asset
             var globalTextAsset = AssetProcessor.LoadTextAsset(textAssetName);
 
-            // If, for some reason, there is no text asset, create a defaul Arial text asset
+            // If, for some reason, there is no text asset, create a default Arial text asset
             if(globalTextAsset == null)
             {
                 AssetProcessor.CreateDefaultTextAsset();
@@ -53,11 +53,11 @@ namespace GTS.GlobalTextSystem
             // Grab all, if any, Text objects in the scene
             var allTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
 
-            // Create and initialie the GlobalFontSettings
+            // Create and initialize the GlobalFontSettings
             new GlobalTextSettings(globalTextAsset, allTextObjects);
 
             // Initialize the listener for the font settings window
-            GlobalTextSettingsWindow.globalFontListner = hierarchyListener;
+            GlobalTextSettingsWindow.hierarchyListener = hierarchyListener;
 
             // Start listening for the creation of text objects
             hierarchyListener.Listen();
