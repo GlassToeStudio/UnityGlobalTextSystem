@@ -2,6 +2,8 @@
 
 ---
 
+---
+
 <p align="center">
   <br>
   <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/Promo.PNG">
@@ -46,7 +48,6 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
   <br>
   <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/development/Images/CustomEditor.gif">
 </p>
-
 
 <p align="center">
   <font size=10><b>Update All Text</b></font>
