@@ -49,7 +49,7 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
 
 
 <p align="center">
-  <font size=10><bUpdate All Text</b></font>
+  <font size=10><b>Update All Text</b></font>
 </p>
 
 ---
@@ -61,7 +61,7 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
 
 
 <p align="center">
-  <font size=10>ee changes in real-time</b></font>
+  <font size=10><b>See changes in real-time</b></font>
 </p>
 
 ---
