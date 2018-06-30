@@ -30,8 +30,10 @@ namespace GTS.GlobalTextSystem.Data
         [SerializeField]
         public Font font { get; set; }
         public FontStyle fontStyle { get; set; }// = FontStyle.Normal;
-        public int fontSize { get; set; } //= 14;
-        public float lineSpacing { get; set; } //= 1.0f;
+        private int _fontSize = 12;
+        public int fontSize { get { return _fontSize; } set { this._fontSize = value; } }
+        private float _lineSpacing = 1f; //= 1.0f;
+        public float lineSpacing { get { return _lineSpacing; } set { this._lineSpacing = value; } }
         public bool supportRichText { get; set; } //= false;
 
         public TextAnchor alignment { get; set; } //= TextAnchor.MiddleCenter;
@@ -44,9 +46,11 @@ namespace GTS.GlobalTextSystem.Data
         public int resizeTextMaxSize { get; set; } //= 60;
 
         private Color _color = Color.black;
-        public Color color { get { return _color; } set { _color = value; } }
+        public Color color { get { return _color; } set { this._color = value; } }
         public Material material { get; set; }
         public bool raycastTarget { get; set; } //= false;
+
+        
 
         public Overrides overrides;
 
