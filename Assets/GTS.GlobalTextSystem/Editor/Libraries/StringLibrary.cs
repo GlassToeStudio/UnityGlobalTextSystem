@@ -22,10 +22,51 @@ namespace GTS.GlobalTextSystem.Libraries
         public const string GLOBAL_FONT_KEY = "GlobalFontData";
 
         /// <summary> The string which holds the save path for each GlobalFontData asset. </summary>
-        public const string SAVE_PATH = "/Editor Default Resources/GTS.GlobalUIFontSettings/";
+        public const string SAVE_PATH = "/Editor Default Resources/GTS.GlobalTextSettings/";
 
         /// <summary> Default Font, when not Font has been chosen, or could not be loaded. </summary>
         public const string ARIAL = "Arial";
+
+        public const string CONTEXT_MENU_PATH = "CONTEXT/Text/";
+
+        public const string SYSTEM_MENU_PATH = "GameObject/Gloat Text/";
+
+        public const string WINDOW_TITLE = "Global Text System/Settings";
+
+
+        #region Text Properties
+
+        public const string FONT = "font";
+
+        public const string FONT_STYLE = "fontStyle";
+
+        public const string FONT_SIZE = "fontSize";
+
+        public const string LINE_SPACING = "lineSpacing";
+
+        public const string RICH_TEXT = "supportRichText";
+
+        public const string ALIGNMENT = "alignment";
+
+        public const string ALIGN_BY_GEOMETRY = "alignByGeometry";
+
+        public const string HORIZONTAL_OVERFLOW = "horizontalOverflow";
+
+        public const string VERTICAL_OVERFLOW = "verticalOverflow";
+
+        public const string BEST_FIT = "resizeTextForBestFit";
+
+        public const string TEXT_MIN = "resizeTextMinSize";
+
+        public const string TEXT_MAX = "resizeTextMaxSize";
+
+        public const string COLOR = "color";
+
+        public const string MATERIAL = "material";
+
+        public const string RAYCAST = "raycastTarget";
+        
+        #endregion
 
 
         #region menu headings

@@ -43,11 +43,11 @@ namespace GTS.GlobalTextSystem.Tools
             }
 
             // No need to listen of the default font is Arial
-            if(GlobalTextSettings.TextSettings.name == StringLibrary.ARIAL)
-            {
-                StopListening();
-                return;
-            }
+            //if(GlobalTextSettings.TextSettings.name == StringLibrary.ARIAL)
+            //{
+            //    StopListening();
+            //    return;
+            //}
 
             StartListening();
         }
@@ -77,13 +77,19 @@ namespace GTS.GlobalTextSystem.Tools
                 }
 
                 // New text object created, update the static list of all Text objects.
-                GlobalTextSettings.AllTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+                GlobalTextSettings.UpdateTextObjects();
 
-                Selection.activeGameObject.GetComponentInChildren<Text>(true).SetFont(GlobalTextSettings.TextSettings.font);
+                var newText = Selection.activeGameObject.GetComponentInChildren<Text>(true);
+
+                foreach(var key in GlobalTextSettings.TextSettings.SavedSettings.Keys)
+                {
+                    newText.ChangeProperty(key);
+                }
             }
         }
 
         #endregion
+
 
 
         #region private methods
@@ -135,7 +141,7 @@ namespace GTS.GlobalTextSystem.Tools
             if(Selection.activeGameObject == null)
             {
                 // We deleted an object update the static list of all Text objects.
-                GlobalTextSettings.AllTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+                GlobalTextSettings.UpdateTextObjects();
 
                 return false;
             }

@@ -1,4 +1,4 @@
-﻿/*
+﻿/*StringLibrary.CONTEXT_MENU_PATH
 ================================================================================
     Product:    Unity-Set-Global_UI-Text_Font
     Developer:  GlassToeStudio@gmail.com
@@ -13,7 +13,6 @@
 
 using UnityEditor;
 using UnityEngine.UI;
-using GTS.GlobalTextSystem.Data;
 using GTS.GlobalTextSystem.Libraries;
 
 /// <summary>
@@ -22,104 +21,102 @@ using GTS.GlobalTextSystem.Libraries;
 namespace GTS.GlobalTextSystem.Menus
 {
     class ContextMenus
-    {
-        //TODO: Move to StringLibrary
-        private const string menuName = "CONTEXT/Text/";
+    {      
 
         #region Context MenuItems
 
-        [MenuItem(menuName + StringLibrary.MENU_FONT)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_FONT)]
         private static void SetToGlobalFont(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.FONT);
+            thisText.ChangeProperty(StringLibrary.FONT);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_FONT_STYLE)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_FONT_STYLE)]
         private static void SetToGlobalFontStyle(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.FONT_STYLE);
+            thisText.ChangeProperty(StringLibrary.FONT_STYLE);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_FONT_SIZE)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_FONT_SIZE)]
         private static void SetToGlobalFontSize(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.FONT_SIZE);
+            thisText.ChangeProperty(StringLibrary.FONT_SIZE);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_LINE_SPACING)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_LINE_SPACING)]
         private static void SetToGlobalLineSpacing(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.LINE_SPACING);
+            thisText.ChangeProperty(StringLibrary.LINE_SPACING);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_RICH_TEXT)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_RICH_TEXT)]
         private static void SetToGlobalRichTextSupport(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.RICH_TEXT);
+            thisText.ChangeProperty(StringLibrary.RICH_TEXT);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_ALIGNMENT)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_ALIGNMENT)]
         private static void SetToGlobalalignment(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.ALIGNMENT);
+            thisText.ChangeProperty(StringLibrary.ALIGNMENT);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_BY_GEOMETRY)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_BY_GEOMETRY)]
         private static void SetToGlobalAlignByGeometry(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.ALIGN_BY_GEOMETRY);
+            thisText.ChangeProperty(StringLibrary.ALIGN_BY_GEOMETRY);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_HORIZONTAL)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_HORIZONTAL)]
         private static void SetToGlobalHorizontalOverflow(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.HORIZONTAL_OVERFLOW);
+            thisText.ChangeProperty(StringLibrary.HORIZONTAL_OVERFLOW);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_VERTICAL)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_VERTICAL)]
         private static void SetToGlobalVerticalOverflow(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.VERTICAL_OVERFLOW);
+            thisText.ChangeProperty(StringLibrary.VERTICAL_OVERFLOW);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_BEST_FIT)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_BEST_FIT)]
         private static void SetToGlobalBestFit(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.BEST_FIT);
+            thisText.ChangeProperty(StringLibrary.BEST_FIT);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_FONT_COLOR)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_FONT_COLOR)]
         private static void SetToGlobalColor(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.COLOR);
+            thisText.ChangeProperty(StringLibrary.COLOR);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_MATERIAL)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_MATERIAL)]
         private static void SetToGlobalMaterial(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.MATERIAL);
+            thisText.ChangeProperty(StringLibrary.MATERIAL);
         }
 
-        [MenuItem(menuName + StringLibrary.MENU_RAYCAST)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH + StringLibrary.MENU_RAYCAST)]
         private static void SetToGlobalRaycastOption(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;
-            thisText.ChangeProperty(TextProperty.RAYCAST);
+            thisText.ChangeProperty(StringLibrary.RAYCAST);
         }
 
-        [MenuItem(menuName +StringLibrary.MENU_SET_ALL, false, 110)]
+        [MenuItem(StringLibrary.CONTEXT_MENU_PATH +StringLibrary.MENU_SET_ALL, false, 110)]
         private static void ChangeToAllGlobalPresets(MenuCommand menuCommand)
         {
             var thisText = menuCommand.context as Text;

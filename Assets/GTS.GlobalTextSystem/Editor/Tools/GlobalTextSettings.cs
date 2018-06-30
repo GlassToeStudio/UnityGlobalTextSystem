@@ -11,6 +11,9 @@
 ================================================================================
 */
 
+using UnityEngine;
+using UnityEngine.UI;
+using System.Reflection;
 using GTS.GlobalTextSystem.Data;
 
 /// <summary>
@@ -26,6 +29,8 @@ namespace GTS.GlobalTextSystem.Tools
         /// <summary> The Global Data to apply to all Text objects. </summary>
         public static TextData TextSettings { get; set; }
 
+        public static PropertyInfo[] Properties;
+
         /// <summary>  Always up-to-date list of all Text objects in the scene. </summary>
         public static object[] AllTextObjects { get; set; }
 
@@ -36,6 +41,18 @@ namespace GTS.GlobalTextSystem.Tools
         {
             TextSettings = textSettings;
             AllTextObjects = allTextObjects;
+
+            Properties = TextSettings.GetType().GetProperties();
+        }
+
+        public static void UpdateProperties()
+        {
+            Properties = TextSettings.GetType().GetProperties();
+        }
+
+        public static void UpdateTextObjects()
+        {
+            AllTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
         }
     }
 }

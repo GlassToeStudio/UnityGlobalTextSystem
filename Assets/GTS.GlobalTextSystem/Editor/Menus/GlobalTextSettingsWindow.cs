@@ -34,13 +34,17 @@ namespace GTS.GlobalTextSystem.Menus
         /// <summary>
         /// Show and initialize the custom Global Text Settings window..
         /// </summary>
-        [MenuItem("Global Font/Settings")]
+        [MenuItem(StringLibrary.WINDOW_TITLE)]
         private static void ShowWindow()
         {
-            GlobalTextSettingsWindow w = GetWindow<GlobalTextSettingsWindow>(false, "Global UI Font", true);
+            GlobalTextSettingsWindow w = GetWindow<GlobalTextSettingsWindow>(false, "Global Text Settings", true);
+
             w.minSize = new Vector2(200, 400);
             w.maxSize = new Vector2(200, 400);
-            w.autoRepaintOnSceneChange = true;
+
+            //w.autoRepaintOnSceneChange = true;
+
+            GlobalTextSettings.UpdateTextObjects();
 
             // Display current Font name.
             if(GlobalTextSettings.TextSettings != null)
@@ -80,8 +84,6 @@ namespace GTS.GlobalTextSystem.Menus
 
             //TODO: Debug Only
             DeletePrefsButton();
-
-            RepaintAll();
         }
 
         /// <summary>
@@ -118,7 +120,7 @@ namespace GTS.GlobalTextSystem.Menus
         private void SetGlobalFontData(Font selectedFont)
         {
             GlobalTextSettings.TextSettings = AssetProcessor.SetGlobalFont(selectedFont);
-
+            GlobalTextSettings.UpdateProperties();
             RepaintAll();
         }
 
@@ -142,10 +144,8 @@ namespace GTS.GlobalTextSystem.Menus
                 hierarchyListener.Listen();
 
                 fontDisplayName = selctedFont;
-
+                RepaintAll();
             }
-
-            RepaintAll();
         }
 
         /// <summary>
@@ -160,13 +160,15 @@ namespace GTS.GlobalTextSystem.Menus
             if(GlobalTextSettings.TextSettings != null)
             {
                 EditorGUILayout.ObjectField(GlobalTextSettings.TextSettings.font, typeof(Font), true);
+                RepaintAll();
             }
             else
             {
                 EditorGUILayout.ObjectField(null, typeof(Font), true);
+                RepaintAll();
             }
 
-            RepaintAll();
+           
         }
 
         /// <summary>
@@ -179,9 +181,9 @@ namespace GTS.GlobalTextSystem.Menus
             if(GUILayout.Button("Change All Fonts In Scene"))
             {
                 PropertyLibrary.ChangeAllFonts();
+                RepaintAll();
             }
 
-            RepaintAll();
         }
 
         /// <summary>
@@ -214,14 +216,16 @@ namespace GTS.GlobalTextSystem.Menus
                     // Do not change color when a new TextData is loaded.
                     EditorGUILayout.ColorField(GlobalTextSettings.TextSettings.color);
                 }
+                RepaintAll();
             }
             else
             {
                 // No TextData, show Black.
                 EditorGUILayout.ColorField(Color.black);
+                RepaintAll();
             }
 
-            RepaintAll();
+            
         }
 
         /// <summary>
@@ -234,6 +238,7 @@ namespace GTS.GlobalTextSystem.Menus
             if(GUILayout.Button("Change All Fonts Size In Scene"))
             {
                 PropertyLibrary.ChangeAllFontSize();
+                RepaintAll();
             }
 
             if(GlobalTextSettings.TextSettings != null)
@@ -244,8 +249,6 @@ namespace GTS.GlobalTextSystem.Menus
             {
                 EditorGUILayout.IntField(0);
             }
-
-            RepaintAll();
         }
 
         /// <summary>
@@ -272,7 +275,15 @@ namespace GTS.GlobalTextSystem.Menus
             {
                 SceneView.lastActiveSceneView.Repaint();
             }
+            if(SceneView.currentDrawingSceneView != null)
+            {
+                SceneView.currentDrawingSceneView.Repaint();
+            }
             SceneView.RepaintAll();
+            EditorApplication.RepaintAnimationWindow();
+            EditorApplication.RepaintHierarchyWindow();
+            EditorApplication.RepaintProjectWindow();
+            
             UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
 
             Repaint();
@@ -292,9 +303,8 @@ namespace GTS.GlobalTextSystem.Menus
             if(GUILayout.Button("Delete Editor Prefs"))
             {
                 EditorPrefs.DeleteAll();
+                RepaintAll();
             }
-
-            RepaintAll();
         }
 
         #endregion
