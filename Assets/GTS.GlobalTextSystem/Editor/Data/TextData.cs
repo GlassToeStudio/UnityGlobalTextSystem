@@ -69,7 +69,6 @@ namespace GTS.GlobalTextSystem.Data
         };
     }
 
-
     [System.Serializable]
     public class Overrides
     {

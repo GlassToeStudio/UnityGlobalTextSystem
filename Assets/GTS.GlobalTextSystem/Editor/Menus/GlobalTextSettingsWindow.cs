@@ -37,7 +37,7 @@ namespace GTS.GlobalTextSystem.Menus
         [MenuItem(StringLibrary.WINDOW_TITLE)]
         private static void ShowWindow()
         {
-            GlobalTextSettingsWindow w = GetWindow<GlobalTextSettingsWindow>(false, "Global Text Settings", true);
+            GlobalTextSettingsWindow w = GetWindow<GlobalTextSettingsWindow>(true, "Global Text Settings", true);
 
             w.minSize = new Vector2(200, 400);
             w.maxSize = new Vector2(200, 400);
@@ -84,6 +84,8 @@ namespace GTS.GlobalTextSystem.Menus
 
             //TODO: Debug Only
             DeletePrefsButton();
+
+            
         }
 
         /// <summary>
@@ -166,9 +168,7 @@ namespace GTS.GlobalTextSystem.Menus
             {
                 EditorGUILayout.ObjectField(null, typeof(Font), true);
                 RepaintAll();
-            }
-
-           
+            }           
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace GTS.GlobalTextSystem.Menus
             EditorGUILayout.Space();
 
             GUILayout.Label("Change All Fonts Color In Scene");
-
+            Selection.activeObject = GlobalTextSettings.TextSettings;
             if(GlobalTextSettings.TextSettings != null)
             {
                 // Allows us to use the Color Picker to change color.
@@ -267,6 +267,7 @@ namespace GTS.GlobalTextSystem.Menus
         }
 
         /// <summary>
+        /// TODO: Need to figure out what to repaint...
         /// Make sure we repaint when changes happen...
         /// </summary>
         private void RepaintAll()
@@ -279,6 +280,7 @@ namespace GTS.GlobalTextSystem.Menus
             {
                 SceneView.currentDrawingSceneView.Repaint();
             }
+
             SceneView.RepaintAll();
             EditorApplication.RepaintAnimationWindow();
             EditorApplication.RepaintHierarchyWindow();
@@ -302,7 +304,7 @@ namespace GTS.GlobalTextSystem.Menus
 
             if(GUILayout.Button("Delete Editor Prefs"))
             {
-                EditorPrefs.DeleteAll();
+                EditorPrefs.SetString(StringLibrary.GLOBAL_FONT_KEY, string.Empty);
                 RepaintAll();
             }
         }

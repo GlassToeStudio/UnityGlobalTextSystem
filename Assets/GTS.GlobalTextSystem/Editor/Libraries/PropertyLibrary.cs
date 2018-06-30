@@ -22,65 +22,65 @@ using GTS.GlobalTextSystem.Tools;
 namespace GTS.GlobalTextSystem.Libraries
 {
     /// <summary>
-    /// Some nasty code in here, beware!
+    /// Helper methods for changing one or all properties for one or all Text objects.
     /// </summary>
     public static class PropertyLibrary
     {
-
-        #region public methods
-
         // Self explanatory naming.
 
         public static void ChangeAllFonts()
         {
-            ChangeProperty(StringLibrary.FONT);
+            ChangePropertyForAllText(StringLibrary.FONT);
         }
 
         public static void ChangeAllFontStyle()
         {
-            ChangeProperty(StringLibrary.FONT_STYLE);
+            ChangePropertyForAllText(StringLibrary.FONT_STYLE);
         }
 
         public static void ChangeAllFontSize()
         {
-            ChangeProperty(StringLibrary.FONT_SIZE);
+            ChangePropertyForAllText(StringLibrary.FONT_SIZE);
         }
 
         public static void ChangeAllLineSpacing()
         {
-            ChangeProperty(StringLibrary.LINE_SPACING);
+            ChangePropertyForAllText(StringLibrary.LINE_SPACING);
         }
 
         public static void ChangeAllRichText()
         {
-            ChangeProperty(StringLibrary.RICH_TEXT);
+            ChangePropertyForAllText(StringLibrary.RICH_TEXT);
         }
 
         public static void ChangeAllAlignment()
         {
-            ChangeProperty(StringLibrary.ALIGNMENT);
+            ChangePropertyForAllText(StringLibrary.ALIGNMENT);
         }
 
         public static void ChangeAllAlignByGeometry()
         {
-            ChangeProperty(StringLibrary.ALIGN_BY_GEOMETRY);
+            ChangePropertyForAllText(StringLibrary.ALIGN_BY_GEOMETRY);
         }
 
         public static void ChangeAllHorizontalOverflow()
         {
-            ChangeProperty(StringLibrary.HORIZONTAL_OVERFLOW);
+            ChangePropertyForAllText(StringLibrary.HORIZONTAL_OVERFLOW);
         }
 
         public static void ChangeAllVerticalOverflow()
         {
-            ChangeProperty(StringLibrary.VERTICAL_OVERFLOW);
+            ChangePropertyForAllText(StringLibrary.VERTICAL_OVERFLOW);
         }
 
         public static void ChangeAllBestFit()
         {
-            ChangeProperty(StringLibrary.BEST_FIT);
+            ChangePropertyForAllText(StringLibrary.BEST_FIT);
         }
 
+        /// <summary>
+        /// Currently does not use reflection.
+        /// </summary>
         public static void ChangeAllColor()
         {
             var textSettings = GlobalTextSettings.TextSettings;
@@ -102,12 +102,12 @@ namespace GTS.GlobalTextSystem.Libraries
 
         public static void ChangeAllMaterial()
         {
-            ChangeProperty(StringLibrary.MATERIAL);
+            ChangePropertyForAllText(StringLibrary.MATERIAL);
         }
 
         public static void ChangeAllRaycastTarget()
         {
-            ChangeProperty(StringLibrary.RAYCAST);
+            ChangePropertyForAllText(StringLibrary.RAYCAST);
         }
 
         /// <summary>
@@ -141,6 +141,9 @@ namespace GTS.GlobalTextSystem.Libraries
             textObject.raycastTarget = textSettings.raycastTarget;
         }
 
+        /// <summary>
+        /// Change Text property of this Text object based on property name.
+        /// </summary>
         public static void ChangeProperty(this Text t, string key)
         {
             Undo.RecordObject(t, "change " + key);
@@ -152,15 +155,10 @@ namespace GTS.GlobalTextSystem.Libraries
             }
         }
 
-        #endregion
-
-
-        #region private
-
         /// <summary>
-        /// Change Text property of all Text based on type name.
+        /// Change Text property of every Text object based on property name.
         /// </summary>
-        private static void ChangeProperty(string key)
+        private static void ChangePropertyForAllText(string key)
         {
             var textSettings = GlobalTextSettings.TextSettings;
 
@@ -176,7 +174,5 @@ namespace GTS.GlobalTextSystem.Libraries
                 t.ChangeProperty(key);
             }
         }
-        
-        #endregion
     }
 }

@@ -21,7 +21,7 @@ using GTS.GlobalTextSystem.Libraries;
 /// </summary>
 namespace GTS.GlobalTextSystem.Menus
 { 
-    public static class SystemMenus
+    class SystemMenus
     {
         #region Menu Items
 

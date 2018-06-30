@@ -66,7 +66,7 @@ namespace GTS.GlobalTextSystem.Data
 
                 // FontStyle
                 StartSection();
-                myTarget.fontStyle = (FontStyle)EditorGUILayout.EnumFlagsField("FontStyle", myTarget.fontStyle, GUILayout.Width(startHorizontalWidth));
+                myTarget.fontStyle = (FontStyle)EditorGUILayout.EnumPopup("FontStyle", myTarget.fontStyle, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
                 myTarget.overrides.saveFontStyle = EditorGUILayout.Toggle(myTarget.overrides.saveFontStyle);
                 EditorGUILayout.LabelField("Apply to new.");
@@ -116,7 +116,7 @@ namespace GTS.GlobalTextSystem.Data
             {
                 // Alignment
                 StartSection();
-                myTarget.alignment = (TextAnchor)EditorGUILayout.EnumFlagsField("Alignment", myTarget.alignment, GUILayout.Width(startHorizontalWidth));
+                myTarget.alignment = (TextAnchor)EditorGUILayout.EnumPopup("Alignment", myTarget.alignment, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
                 myTarget.overrides.saveAlignment = EditorGUILayout.Toggle(myTarget.overrides.saveAlignment);
                 EditorGUILayout.LabelField("Apply to new.");
@@ -132,7 +132,7 @@ namespace GTS.GlobalTextSystem.Data
 
                 // Horizontal Overflow
                 StartSection();
-                myTarget.horizontalOverflow = (HorizontalWrapMode)EditorGUILayout.EnumFlagsField("Horizontal Overflow", myTarget.horizontalOverflow, GUILayout.Width(startHorizontalWidth));
+                myTarget.horizontalOverflow = (HorizontalWrapMode)EditorGUILayout.EnumPopup("Horizontal Overflow", myTarget.horizontalOverflow, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
                 myTarget.overrides.saveHorizontalOverflow = EditorGUILayout.Toggle(myTarget.overrides.saveHorizontalOverflow);
                 EditorGUILayout.LabelField("Apply to new.");
@@ -140,7 +140,7 @@ namespace GTS.GlobalTextSystem.Data
 
                 // Vertical Overflow
                 StartSection();
-                myTarget.verticalOverflow = (VerticalWrapMode)EditorGUILayout.EnumFlagsField("Vertical Overflow", myTarget.verticalOverflow, GUILayout.Width(startHorizontalWidth));
+                myTarget.verticalOverflow = (VerticalWrapMode)EditorGUILayout.EnumPopup("Vertical Overflow", myTarget.verticalOverflow, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
                 myTarget.overrides.saveVerticalOVerflow = EditorGUILayout.Toggle(myTarget.overrides.saveVerticalOVerflow);
                 EditorGUILayout.LabelField("Apply to new.");
