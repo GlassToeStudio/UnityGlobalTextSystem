@@ -59,7 +59,7 @@ To use the project, all you need is to [Download the latest release](https://git
 
 Alternately you can Clone the repo using:
 
-    git clone https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font.git
+    git clone https://github.com/GlassToeStudio/UnityGlobalTextSystem.git
 
 ### Contributing
 ---
