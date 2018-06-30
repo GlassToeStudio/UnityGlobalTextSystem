@@ -55,7 +55,7 @@ If contributing, be sure to have `git` installed.
 ### Installing
 ---
 
-To use the project, all you need is to [Download the latest release](https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font/releases) and import the package into your Unity project.
+To use the project, all you need is to [Download the latest release](https://github.com/GlassToeStudio/UnityGlobalTextSystem/releases) and import the package into your Unity project.
 
 Alternately you can Clone the repo using:
 
