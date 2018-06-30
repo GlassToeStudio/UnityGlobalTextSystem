@@ -1,4 +1,6 @@
-# Unity-Set-Global-UI-Text-Font
+# Unity Global Text System
+
+---
 
 ---
 
@@ -14,7 +16,7 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
 ## Getting Started
 ---
    * Select a Font that is in your project to be the Global Font.
-   * This can be set from **"Global Font/Settings"**
+   * This can be set from **"Global Text System/Settings"**
    * Now, when a UI Text is added, it will have this font.
 
      **Additional Options**
@@ -26,19 +28,49 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
 
 
 <p align="center">
-  <b>Add New Text With Your Font:</b><br>
- <br>
+  <font size=10><b>Add New Text With Your Font:</b></font>
 </p>
 
-![CreateNewText.gif](https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/CreateNewText.gif)
+---
+
+<p align="center">
+  <br>
+  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/CreateNewText.gif">
+</p>
+
+<p align="center">
+  <font size=10><b>Select any property to override via the custom editor:</b></font>
+</p>
+
+---
+
+<p align="center">
+  <br>
+  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/development/Images/CustomEditor.gif">
+</p>
+
+<p align="center">
+  <font size=10><b>Update All Text</b></font>
+</p>
+
+---
+
+<p align="center">
+  <br>
+  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/ChangeAllFontsInScene.gif">
+</p>
 
 
 <p align="center">
-  <b>Update All Text</b><br>
- <br>
+  <font size=10><b>See changes in real-time</b></font>
 </p>
 
-![ChangeAllFontsInScene.gif](https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/ChangeAllFontsInScene.gif)
+---
+
+<p align="center">
+  <br>
+  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/development/Images/ColorChangeRealTime.gif">
+</p>
 
 
 ### Prerequisites
@@ -55,7 +87,7 @@ If contributing, be sure to have `git` installed.
 ### Installing
 ---
 
-To use the project, all you need is to [Download the latest release](https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font/releases) and import the package into your Unity project.
+To use the project, all you need is to [Download the latest release](https://github.com/GlassToeStudio/UnityGlobalTextSystem/releases) and import the package into your Unity project.
 
 Alternately you can Clone the repo using:
 
