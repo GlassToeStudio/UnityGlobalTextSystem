@@ -29,30 +29,28 @@ namespace GTS.GlobalTextSystem.Data
 
         [SerializeField]
         public Font font { get; set; }
-        public FontStyle fontStyle { get; set; }// = FontStyle.Normal;
-        private int _fontSize = 12;
+        public FontStyle fontStyle { get; set; }
+        private int _fontSize = 14;
         public int fontSize { get { return _fontSize; } set { this._fontSize = value; } }
-        private float _lineSpacing = 1f; //= 1.0f;
+        private float _lineSpacing = 1f;
         public float lineSpacing { get { return _lineSpacing; } set { this._lineSpacing = value; } }
-        public bool supportRichText { get; set; } //= false;
+        public bool supportRichText { get; set; }
 
-        public TextAnchor alignment { get; set; } //= TextAnchor.MiddleCenter;
-        public bool alignByGeometry { get; set; } //= false;
-        public HorizontalWrapMode horizontalOverflow { get; set; } //= HorizontalWrapMode.Overflow;
-        public VerticalWrapMode verticalOverflow { get; set; } //= VerticalWrapMode.Truncate;
-        public bool resizeTextForBestFit { get; set; } //= false;
+        public TextAnchor alignment { get; set; }
+        public bool alignByGeometry { get; set; }
+        public HorizontalWrapMode horizontalOverflow { get; set; }
+        public VerticalWrapMode verticalOverflow { get; set; }
+        public bool resizeTextForBestFit { get; set; }
 
-        public int resizeTextMinSize { get; set; } //= 0;
-        public int resizeTextMaxSize { get; set; } //= 60;
+        public int resizeTextMinSize { get; set; }
+        public int resizeTextMaxSize { get; set; }
 
         private Color _color = Color.black;
         public Color color { get { return _color; } set { this._color = value; } }
         public Material material { get; set; }
-        public bool raycastTarget { get; set; } //= false;
+        public bool raycastTarget { get; set; }
 
-        
-
-        public Overrides overrides;
+        public TextOverrides overrides;
 
         public Dictionary<string, bool> SavedSettings = new Dictionary<string, bool>()
         {
@@ -72,29 +70,5 @@ namespace GTS.GlobalTextSystem.Data
             { StringLibrary.MATERIAL, false },
             { StringLibrary.RAYCAST, false }
         };
-    }
-
-    [System.Serializable]
-    public class Overrides
-    {
-        private bool _saveFont = true;
-        public bool saveFont { get { return _saveFont; } set { _saveFont = value; } }
-        public bool saveFontStyle { get; set; }
-        public bool saveFontSize { get; set; }
-        public bool saveLineSpacing { get; set; }
-        public bool saveRichText { get; set; }
-
-        public bool saveAlignment { get; set; }
-        public bool saveAlighnByGeometry { get; set; }
-        public bool saveHorizontalOverflow { get; set; }
-        public bool saveVerticalOVerflow { get; set; }
-        public bool saveBestFit { get; set; }
-        public bool saveMinText { get; set; }
-        public bool saveMaxText { get; set; }
-
-        private bool _saveColor = true;
-        public bool saveColor { get { return _saveColor; } set { _saveColor = value; } }
-        public bool saveMaterial { get; set; }
-        public bool saveRaycaset { get; set; }
     }
 }

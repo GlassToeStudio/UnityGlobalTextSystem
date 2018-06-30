@@ -53,6 +53,10 @@ namespace GTS.GlobalTextSystem
 
             // Grab all, if any, Text objects in the scene
             var allTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+            if(allTextObjects == null)
+            {
+                allTextObjects = Resources.FindObjectsOfTypeAll(typeof(Text));
+            }
 
             // Create and initialize the GlobalFontSettings
             new GlobalTextSettings(globalTextAsset, allTextObjects);
