@@ -43,7 +43,8 @@ namespace GTS.GlobalTextSystem.Data
         public int resizeTextMinSize { get; set; } //= 0;
         public int resizeTextMaxSize { get; set; } //= 60;
 
-        public Color color { get; set; } //= Color.black;
+        private Color _color = Color.black;
+        public Color color { get { return _color; } set { _color = value; } }
         public Material material { get; set; }
         public bool raycastTarget { get; set; } //= false;
 
@@ -72,7 +73,8 @@ namespace GTS.GlobalTextSystem.Data
     [System.Serializable]
     public class Overrides
     {
-        public bool saveFont { get; set; }
+        private bool _saveFont = true;
+        public bool saveFont { get { return _saveFont; } set { _saveFont = value; } }
         public bool saveFontStyle { get; set; }
         public bool saveFontSize { get; set; }
         public bool saveLineSpacing { get; set; }
@@ -86,7 +88,8 @@ namespace GTS.GlobalTextSystem.Data
         public bool saveMinText { get; set; }
         public bool saveMaxText { get; set; }
 
-        public bool saveColor { get; set; }
+        private bool _saveColor = true;
+        public bool saveColor { get { return _saveColor; } set { _saveColor = value; } }
         public bool saveMaterial { get; set; }
         public bool saveRaycaset { get; set; }
     }
