@@ -1,4 +1,4 @@
-# Unity-Set-Global-UI-Text-Font
+# Unity Global Text System
 
 ---
 
