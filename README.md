@@ -4,7 +4,7 @@
 
 <p align="center">
   <br>
-  <img src="https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font/blob/master/Images/Promo.PNG">
+  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/Promo.PNG">
 </p>
 
 This package will allow one to select a default global font for Unity UI Text. 
@@ -30,7 +30,7 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
  <br>
 </p>
 
-![CreateNewText.gif](https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font/blob/master/Images/CreateNewText.gif)
+![CreateNewText.gif](https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/CreateNewText.gif)
 
 
 <p align="center">
@@ -38,7 +38,7 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
  <br>
 </p>
 
-![ChangeAllFontsInScene.gif](https://github.com/GlassToeStudio/Unity-Set-Global-UI-Text-Font/blob/master/Images/ChangeAllFontsInScene.gif)
+![ChangeAllFontsInScene.gif](https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/ChangeAllFontsInScene.gif)
 
 
 ### Prerequisites
