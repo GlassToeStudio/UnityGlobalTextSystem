@@ -46,7 +46,7 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
 
 <p align="center">
   <br>
-  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/development/Images/CustomEditor.gif">
+  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/CustomEditor.gif">
 </p>
 
 <p align="center">
@@ -69,7 +69,7 @@ When a new UI Text (even if the Text is a Child, ex: Button) it will have the fo
 
 <p align="center">
   <br>
-  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/development/Images/ColorChangeRealTime.gif">
+  <img src="https://github.com/GlassToeStudio/UnityGlobalTextSystem/blob/master/Images/ColorChangeRealTime.gif">
 </p>
 
 
