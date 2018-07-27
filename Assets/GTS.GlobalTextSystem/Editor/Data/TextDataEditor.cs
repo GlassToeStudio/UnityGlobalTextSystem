@@ -60,7 +60,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.font = (Font) EditorGUILayout.ObjectField("Font", myTarget.font, typeof(Font), true, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveFont = EditorGUILayout.Toggle(myTarget.overrides.saveFont);
+                myTarget.overrides.SaveFont = EditorGUILayout.Toggle(myTarget.overrides.SaveFont);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -68,7 +68,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.fontStyle = (FontStyle)EditorGUILayout.EnumPopup("FontStyle", myTarget.fontStyle, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveFontStyle = EditorGUILayout.Toggle(myTarget.overrides.saveFontStyle);
+                myTarget.overrides.SaveFontStyle = EditorGUILayout.Toggle(myTarget.overrides.SaveFontStyle);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -76,7 +76,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.fontSize = EditorGUILayout.IntField("FontSize", myTarget.fontSize, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveFontSize = EditorGUILayout.Toggle(myTarget.overrides.saveFontSize);
+                myTarget.overrides.SaveFontSize = EditorGUILayout.Toggle(myTarget.overrides.SaveFontSize);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -84,7 +84,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.lineSpacing = EditorGUILayout.FloatField("Line Spacing", myTarget.lineSpacing, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveLineSpacing = EditorGUILayout.Toggle(myTarget.overrides.saveLineSpacing);
+                myTarget.overrides.SaveLineSpacing = EditorGUILayout.Toggle(myTarget.overrides.SaveLineSpacing);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -92,7 +92,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.supportRichText = EditorGUILayout.Toggle("Rich Text", myTarget.supportRichText, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveRichText = EditorGUILayout.Toggle(myTarget.overrides.saveRichText);
+                myTarget.overrides.SaveRichText = EditorGUILayout.Toggle(myTarget.overrides.SaveRichText);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -118,7 +118,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.alignment = (TextAnchor)EditorGUILayout.EnumPopup("Alignment", myTarget.alignment, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveAlignment = EditorGUILayout.Toggle(myTarget.overrides.saveAlignment);
+                myTarget.overrides.SaveAlignment = EditorGUILayout.Toggle(myTarget.overrides.SaveAlignment);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -126,7 +126,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.alignByGeometry = EditorGUILayout.Toggle("Align By Geometry", myTarget.alignByGeometry, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveAlighnByGeometry = EditorGUILayout.Toggle(myTarget.overrides.saveAlighnByGeometry);
+                myTarget.overrides.SaveAlighnByGeometry = EditorGUILayout.Toggle(myTarget.overrides.SaveAlighnByGeometry);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -134,7 +134,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.horizontalOverflow = (HorizontalWrapMode)EditorGUILayout.EnumPopup("Horizontal Overflow", myTarget.horizontalOverflow, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveHorizontalOverflow = EditorGUILayout.Toggle(myTarget.overrides.saveHorizontalOverflow);
+                myTarget.overrides.SaveHorizontalOverflow = EditorGUILayout.Toggle(myTarget.overrides.SaveHorizontalOverflow);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -142,7 +142,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.verticalOverflow = (VerticalWrapMode)EditorGUILayout.EnumPopup("Vertical Overflow", myTarget.verticalOverflow, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveVerticalOVerflow = EditorGUILayout.Toggle(myTarget.overrides.saveVerticalOVerflow);
+                myTarget.overrides.SaveVerticalOVerflow = EditorGUILayout.Toggle(myTarget.overrides.SaveVerticalOVerflow);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -150,7 +150,7 @@ namespace GTS.GlobalTextSystem.Data
                 StartSection();
                 myTarget.resizeTextForBestFit = EditorGUILayout.Toggle("Best Fit", myTarget.resizeTextForBestFit, GUILayout.Width(startHorizontalWidth));
                 MiddleSection();
-                myTarget.overrides.saveBestFit = EditorGUILayout.Toggle(myTarget.overrides.saveBestFit);
+                myTarget.overrides.SaveBestFit = EditorGUILayout.Toggle(myTarget.overrides.SaveBestFit);
                 EditorGUILayout.LabelField("Apply to new.");
                 EndSction();
 
@@ -161,7 +161,7 @@ namespace GTS.GlobalTextSystem.Data
                     StartSection(2);
                     myTarget.resizeTextMinSize = EditorGUILayout.IntField("Min Size", myTarget.resizeTextMinSize, GUILayout.Width(startHorizontalWidth));
                     MiddleSection();
-                    myTarget.overrides.saveMinText = EditorGUILayout.Toggle(myTarget.overrides.saveMinText);
+                    myTarget.overrides.SaveMinText = EditorGUILayout.Toggle(myTarget.overrides.SaveMinText);
                     EditorGUILayout.LabelField("Apply to new.");
                     EndSction();
 
@@ -169,7 +169,7 @@ namespace GTS.GlobalTextSystem.Data
                     StartSection(2);
                     myTarget.resizeTextMaxSize = EditorGUILayout.IntField("Max Size", myTarget.resizeTextMaxSize, GUILayout.Width(startHorizontalWidth));
                     MiddleSection();
-                    myTarget.overrides.saveMaxText = EditorGUILayout.Toggle(myTarget.overrides.saveMaxText);
+                    myTarget.overrides.SaveMaxText = EditorGUILayout.Toggle(myTarget.overrides.SaveMaxText);
                     EditorGUILayout.LabelField("Apply to new.");
                     EndSction();
                 }
@@ -187,7 +187,7 @@ namespace GTS.GlobalTextSystem.Data
             myTarget.color = EditorGUILayout.ColorField("Color", myTarget.color, GUILayout.Width(startHorizontalWidth));
             MiddleSection();
             MiddleSection();
-            myTarget.overrides.saveColor = EditorGUILayout.Toggle(myTarget.overrides.saveColor);
+            myTarget.overrides.SaveColor = EditorGUILayout.Toggle(myTarget.overrides.SaveColor);
             EditorGUILayout.LabelField("Apply to new.");
             EndSction();
 
@@ -196,7 +196,7 @@ namespace GTS.GlobalTextSystem.Data
             myTarget.material = (Material)EditorGUILayout.ObjectField("Material", myTarget.material, typeof(Material), true, GUILayout.Width(startHorizontalWidth));
             MiddleSection();
             MiddleSection();
-            myTarget.overrides.saveMaterial = EditorGUILayout.Toggle(myTarget.overrides.saveMaterial);
+            myTarget.overrides.SaveMaterial = EditorGUILayout.Toggle(myTarget.overrides.SaveMaterial);
             EditorGUILayout.LabelField("Apply to new.");
             EndSction();
 
@@ -205,7 +205,7 @@ namespace GTS.GlobalTextSystem.Data
             myTarget.raycastTarget = EditorGUILayout.Toggle("Raycast Target", myTarget.raycastTarget, GUILayout.Width(startHorizontalWidth));
             MiddleSection();
             MiddleSection();
-            myTarget.overrides.saveRaycaset = EditorGUILayout.Toggle(myTarget.overrides.saveRaycaset);
+            myTarget.overrides.SaveRaycaset = EditorGUILayout.Toggle(myTarget.overrides.SaveRaycaset);
             EditorGUILayout.LabelField("Apply to new.");
             EndSction();
 
@@ -218,21 +218,21 @@ namespace GTS.GlobalTextSystem.Data
 
         private void UpdateDictionary()
         {
-            myTarget.SavedSettings[StringLibrary.FONT] = myTarget.overrides.saveFont;
-            myTarget.SavedSettings[StringLibrary.FONT_STYLE] = myTarget.overrides.saveFontStyle;
-            myTarget.SavedSettings[StringLibrary.FONT_SIZE] = myTarget.overrides.saveFontSize;
-            myTarget.SavedSettings[StringLibrary.LINE_SPACING] = myTarget.overrides.saveLineSpacing;
-            myTarget.SavedSettings[StringLibrary.RICH_TEXT] = myTarget.overrides.saveRichText;
-            myTarget.SavedSettings[StringLibrary.ALIGNMENT] = myTarget.overrides.saveAlignment;
-            myTarget.SavedSettings[StringLibrary.ALIGN_BY_GEOMETRY] = myTarget.overrides.saveAlighnByGeometry;
-            myTarget.SavedSettings[StringLibrary.HORIZONTAL_OVERFLOW] = myTarget.overrides.saveHorizontalOverflow;
-            myTarget.SavedSettings[StringLibrary.VERTICAL_OVERFLOW] = myTarget.overrides.saveVerticalOVerflow;
-            myTarget.SavedSettings[StringLibrary.BEST_FIT] = myTarget.overrides.saveBestFit;
-            myTarget.SavedSettings[StringLibrary.TEXT_MIN] = myTarget.overrides.saveMinText;
-            myTarget.SavedSettings[StringLibrary.TEXT_MAX] = myTarget.overrides.saveMinText;
-            myTarget.SavedSettings[StringLibrary.COLOR] = myTarget.overrides.saveColor;
-            myTarget.SavedSettings[StringLibrary.MATERIAL] = myTarget.overrides.saveMaterial;
-            myTarget.SavedSettings[StringLibrary.RAYCAST] = myTarget.overrides.saveRaycaset;
+            myTarget.SavedSettings[StringLibrary.FONT] = myTarget.overrides.SaveFont;
+            myTarget.SavedSettings[StringLibrary.FONT_STYLE] = myTarget.overrides.SaveFontStyle;
+            myTarget.SavedSettings[StringLibrary.FONT_SIZE] = myTarget.overrides.SaveFontSize;
+            myTarget.SavedSettings[StringLibrary.LINE_SPACING] = myTarget.overrides.SaveLineSpacing;
+            myTarget.SavedSettings[StringLibrary.RICH_TEXT] = myTarget.overrides.SaveRichText;
+            myTarget.SavedSettings[StringLibrary.ALIGNMENT] = myTarget.overrides.SaveAlignment;
+            myTarget.SavedSettings[StringLibrary.ALIGN_BY_GEOMETRY] = myTarget.overrides.SaveAlighnByGeometry;
+            myTarget.SavedSettings[StringLibrary.HORIZONTAL_OVERFLOW] = myTarget.overrides.SaveHorizontalOverflow;
+            myTarget.SavedSettings[StringLibrary.VERTICAL_OVERFLOW] = myTarget.overrides.SaveVerticalOVerflow;
+            myTarget.SavedSettings[StringLibrary.BEST_FIT] = myTarget.overrides.SaveBestFit;
+            myTarget.SavedSettings[StringLibrary.TEXT_MIN] = myTarget.overrides.SaveMinText;
+            myTarget.SavedSettings[StringLibrary.TEXT_MAX] = myTarget.overrides.SaveMinText;
+            myTarget.SavedSettings[StringLibrary.COLOR] = myTarget.overrides.SaveColor;
+            myTarget.SavedSettings[StringLibrary.MATERIAL] = myTarget.overrides.SaveMaterial;
+            myTarget.SavedSettings[StringLibrary.RAYCAST] = myTarget.overrides.SaveRaycaset;
         }
 
         private void StartSection(int indent = 1)

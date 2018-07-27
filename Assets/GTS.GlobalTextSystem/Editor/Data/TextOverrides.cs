@@ -19,24 +19,24 @@ namespace GTS.GlobalTextSystem.Data
     [System.Serializable]
     public class TextOverrides
     {
-        private bool _saveFont = true;
-        public bool saveFont { get { return _saveFont; } set { _saveFont = value; } }
-        public bool saveFontStyle { get; set; }
-        public bool saveFontSize { get; set; }
-        public bool saveLineSpacing { get; set; }
-        public bool saveRichText { get; set; }
+        private bool saveFont = true;
+        public bool SaveFont { get { return saveFont; } set { saveFont = value; } }
+        public bool SaveFontStyle { get; set; }
+        public bool SaveFontSize { get; set; }
+        public bool SaveLineSpacing { get; set; }
+        public bool SaveRichText { get; set; }
 
-        public bool saveAlignment { get; set; }
-        public bool saveAlighnByGeometry { get; set; }
-        public bool saveHorizontalOverflow { get; set; }
-        public bool saveVerticalOVerflow { get; set; }
-        public bool saveBestFit { get; set; }
-        public bool saveMinText { get; set; }
-        public bool saveMaxText { get; set; }
+        public bool SaveAlignment { get; set; }
+        public bool SaveAlighnByGeometry { get; set; }
+        public bool SaveHorizontalOverflow { get; set; }
+        public bool SaveVerticalOVerflow { get; set; }
+        public bool SaveBestFit { get; set; }
+        public bool SaveMinText { get; set; }
+        public bool SaveMaxText { get; set; }
 
-        private bool _saveColor = true;
-        public bool saveColor { get { return _saveColor; } set { _saveColor = value; } }
-        public bool saveMaterial { get; set; }
-        public bool saveRaycaset { get; set; }
+        private bool saveColor = true;
+        public bool SaveColor { get { return saveColor; } set { saveColor = value; } }
+        public bool SaveMaterial { get; set; }
+        public bool SaveRaycaset { get; set; }
     }
 }
