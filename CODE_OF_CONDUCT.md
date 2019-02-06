@@ -1,4 +1,4 @@
-# Contributor Covenant Code of Conduct
+# Glass Toe Studio Code of Conduct
 
 ## Our Pledge
 
